@@ -64,7 +64,8 @@ The prototype does not claim to replace or replicate ECG, blood pressure monitor
 | 2 | Sensors | Pressure Sensor Matrix Material | Velostat / Linqstat piezoresistive conductive sheet, 30 cm × 30 cm minimum per sheet | 4 | 600 | 2,400 | Purchase | Four sheets tile a single-bed-zone sensing area (~60 cm × 60 cm covering torso + lower body). Velostat DIY matrix is the standard low-cost research approach for pressure mapping. Commercial pressure mat systems cost ₹50,000+. | [Thingbits Electronics](https://thingbits.in) / [MG Super Labs](https://mgsuperlabs.co.in) — verified ₹400–₹700 per sheet |
 | 3 | Sensors | Matrix Electrode Material | Conductive fabric tape 5 mm width, 10 m roll | 2 | 350 | 700 | Purchase | Row-column electrode grid on Velostat for pressure matrix construction. Standard DIY matrix material; required for the matrix to function. | [Robu.in](https://robu.in) / local Coimbatore electronics market — Estimated |
 | 4 | Sensors | Load Cells (50 kg) | Half-bridge 50 kg aluminium body load cell | 4 | 100 | 400 | Purchase | One per bed leg. Four cells in two full-bridge pairs provide total weight measurement for patient weight, occupancy, visitor detection, and bed exit monitoring. Explicitly identified as low-cost and reliable in project document. | [Robu.in](https://robu.in) / [Robocraze](https://robocraze.com) — verified ₹50–₹150 per cell |
-| 5 | Sensors | Thermal Camera Module | MLX90640 IR thermal array, 32×24 pixels, 55° FOV, I2C, 3.3 V/5 V | 1 | 5,000 | 5,000 | Purchase | 32×24 pixel array is sufficient for surface temperature mapping of a supine patient. Provides skin temperature trending for fever/infection monitoring — the stated research objective. Medical-grade thermal cameras cost ₹2,00,000+. MLX90640 is widely used in contactless temperature research prototypes. | [Robocraze](https://robocraze.com) / [Robu.in](https://robu.in) — verified ₹4,589–₹5,200 range |
+| 5 | Sensors | Thermal Camera — Spatial Array | MLX90640 IR thermal array, 32×24 pixels, 55° FOV, I2C, 3.3 V/5 V | 1 | 5,000 | 5,000 | Purchase | Spatial thermal mapping of the supine patient: body-position estimation, presence detection, and temperature zone monitoring over time. 32×24 px is appropriate for a hospital bed footprint. Medical-grade thermal cameras cost ₹2,00,000+. MLX90640 is widely used in contactless temperature research prototypes. Note: ±1.5°C accuracy — supplemented by MLX90614 (Item 5B) for accurate point readings. | [Robocraze](https://robocraze.com) / [Robu.in](https://robu.in) — verified ₹4,589–₹5,200 range |
+| 5B | Sensors | Point Temperature Sensor | Melexis MLX90614ESF-BCC (90° FOV) or DCH (35° FOV), ±0.2°C accuracy, I2C, 3.3 V | 1 | 700 | 700 | Purchase | High-accuracy single-pixel IR thermometer for clinical-grade skin temperature readings. Aimed at patient forehead/chest from headboard. Provides the accurate, peer-review-defensible temperature measurement (±0.2°C) that the MLX90640 cannot deliver (±1.5°C). Also used to cross-validate MLX90640 readings during calibration. | [Robu.in](https://robu.in) / local market — estimated ₹600–₹800 |
 | 6 | Processing | Raspberry Pi 5 (8 GB) | Raspberry Pi 5, 8 GB LPDDR4X RAM, BCM2712 quad-core | 1 | 9,500 | 9,500 | Purchase | Primary edge-computing platform. Runs Python sensor fusion, AI inference (PyTorch/Scikit-learn), FastAPI backend, and MQTT broker simultaneously. 8 GB RAM required for real-time AI inference. Explicitly specified in project document. | [ThinkRobotics](https://thinkrobotics.com) / [Robu.in](https://robu.in) — verified ₹8,200–₹9,999 range |
 | 7 | Processing | Raspberry Pi 5 Active Cooler | Official Raspberry Pi 5 active cooler (fan + heatsink clip-on) | 1 | 460 | 460 | Purchase | Required for sustained AI inference workloads without thermal throttling on the Pi 5. | [Robu.in](https://robu.in) — verified ₹430–₹490 range |
 | 8 | Processing | MicroSD Card 64 GB A2 | SanDisk / Samsung 64 GB A2 Class 10 microSD | 1 | 900 | 900 | Purchase | Primary OS and software storage for Raspberry Pi 5. A2-rated for random I/O performance required for live database writes during data collection. | [Amazon India](https://amazon.in) / [Flipkart](https://flipkart.com) — verified ₹700–₹1,000 range |
@@ -78,7 +79,7 @@ The prototype does not claim to replace or replicate ECG, blood pressure monitor
 | 16 | Electronics | Logic Level Converters | Bi-directional 4-channel I2C/SPI logic level shifter module | 2 | 80 | 160 | Purchase | Safe interface between 5 V ESP32 I/O and 3.3 V sensors (MLX90640, ADS1115) without risking component damage. | [Robu.in](https://robu.in) |
 | 17 | Power | 12 V DC Power Supply | 12 V 5 A regulated DC bench supply with terminal block | 1 | 700 | 700 | Purchase | Centralised power for ESP32 boards, multiplexers, and ADC modules. Reduces complexity of individual USB power cables during prototype operation. | [Robu.in](https://robu.in) / local Coimbatore electronics market — Estimated / Quote Required |
 | 18 | Power | DC-DC Buck Converter Modules | LM2596 adjustable step-down buck converter module, 1.5 A output | 3 | 60 | 180 | Purchase | Steps 12 V supply down to 5 V for individual sensor sub-circuits, reducing wiring complexity and supply noise. | [Robu.in](https://robu.in) / [Robocraze](https://robocraze.com) |
-| 19 | Storage | External Portable SSD 500 GB | Samsung T7 Shield 500 GB USB 3.2 Gen 2 portable SSD | 1 | 5,500 | 5,500 | Purchase | Long-running data collection (radar I/Q samples, pressure matrix frames, thermal images) produces datasets too large for reliable microSD storage. USB SSD provides fast, reliable, durable storage for experimental sessions. | [Amazon India](https://amazon.in) / [Flipkart](https://flipkart.com) — verified ₹5,000–₹6,500 range |
+| — | Storage | ~~External SSD~~ — **REMOVED** | — | — | — | 0 | **Not purchased** | A laptop will be present at all experimental sessions for monitoring. Data is stored directly on the laptop via SSH / shared folder. The 64 GB A2 microSD (Item 8) buffers per-session data; the V7 USB flash drive provides supervisor backup. Cloud (institutional OneDrive/Google Drive) gives additional redundancy. **Saving: ₹5,500.** | — |
 | 20 | Communication | USB-to-UART Debug Cable | CH340-based USB-to-UART TTL serial cable | 1 | 120 | 120 | Purchase | ESP32 serial debugging and firmware flashing without occupying the onboard USB port during deployment. | [Robu.in](https://robu.in) |
 
 ---
@@ -87,13 +88,13 @@ The prototype does not claim to replace or replicate ECG, blood pressure monitor
 
 | Sub-Category | Items | Amount (₹) |
 |---|---|---:|
-| Sensors | mmWave radar, Velostat sheets ×4, conductive electrode tape ×2, load cells ×4, MLX90640 thermal camera | 9,150 |
+| Sensors | mmWave radar, Velostat sheets ×4, conductive electrode tape ×2, load cells ×4, MLX90640 spatial thermal camera, MLX90614 point temperature sensor | 9,850 |
 | Processing | Raspberry Pi 5 (8 GB) + active cooler + 64 GB microSD + 27 W power supply | 12,060 |
 | Microcontrollers | 2× ESP32 WROOM-32 38-pin boards | 900 |
 | Electronics | HX711 ×2, CD74HC4067 mux ×3, ADS1115 ×2, breadboards + jumpers, resistors/capacitors, logic level converters ×2 | 1,385 |
 | Power | 12 V/5 A DC supply + 3× LM2596 buck converters | 880 |
-| Storage & Communication | Samsung T7 Shield 500 GB SSD + CH340 debug cable | 5,620 |
-| **Hardware Total** | | **₹29,995** |
+| Communication | CH340 debug cable (external SSD removed — laptop storage used) | 120 |
+| **Hardware Total** | | **₹25,195** |
 
 ---
 
@@ -169,14 +170,14 @@ The contingency is intended to cover:
 
 | Category | Amount (₹) |
 |---|---:|
-| Hardware (sensors, processing, MCU, electronics, power, storage) | 29,995 |
+| Hardware (sensors + MLX90614, processing, MCU, electronics, power, communication) | 25,195 |
 | Prototype Fabrication (mounting, wiring, enclosures, mechanical) | 4,460 |
 | Data & Experimentation (calibration, test materials, consumables) | 3,350 |
 | Validation (volunteer sessions, ethics documentation, reference items) | 2,950 |
 | Contingency | 4,245 |
-| **TOTAL** | **₹45,000** |
+| **TOTAL** | **₹40,200** |
 
-> **Surplus vs. ₹1,00,000 cap: ₹55,000 uncommitted.**  
+> **Surplus vs. ₹1,00,000 cap: ₹59,800 uncommitted.**  
 > This surplus is intentional. It accurately reflects the project document's own estimate of ₹50,000–₹70,000. Artificially inflating the budget to consume the full ₹1 lakh would mislead the funding committee and waste institutional resources.  
 >
 > **Recommended use of surplus:** Retain in institutional account for Phase 2 — potential clinical-site testing, improved sensor hardware (higher-resolution radar or pressure mat for follow-up study), or conference paper submission and travel fees.
@@ -250,9 +251,9 @@ Provides a responsible operational buffer for component failures, price changes,
    1. Raspberry Pi 5 + accessories (leads the software development timeline)
    2. ESP32 boards + electronics modules
    3. Velostat sheets + conductive materials (matrix construction takes longest)
-   4. MLX90640 thermal camera
+   4. MLX90640 thermal camera + MLX90614 point temperature sensor (Item 5B)
    5. Load cells + HX711 modules
-   6. HLK-LD2450 radar module
+   6. HLK-LD6002 vital sign radar module (replaces HLK-LD2450 — see BudgetVerification.md)
    7. Fabrication materials (after sensor placement is finalised)
    8. Calibration weights and experimental consumables (just before first test session)
 

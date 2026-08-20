@@ -13,7 +13,7 @@
 | Metric | Count |
 |---|---:|
 | Original budget total | ₹45,000 |
-| Verified / revised budget total | ₹47,245 |
+| Verified / revised budget total | ₹38,445 |
 | Total line items reviewed | 30 (hardware ×20, fabrication ×10) |
 | Prices verified as accurate | 16 |
 | Prices corrected (upward) | 2 |
@@ -36,7 +36,8 @@
 | 2 | Sensors | Velostat pressure matrix sheet | Piezoresistive conductive sheet, ~280×280 mm per sheet | Velostat / Linqstat sheet (standard 11"×11") | Thingbits Electronics | ₹600 ea. | No (GST extra) | Nominal | **In stock** | B | **₹470 ea. (inc. GST) → ₹1,880 for 4** | **Price corrected — budget overestimated** |
 | 3 | Sensors | Conductive electrode tape | 5 mm conductive fabric tape, 10 m roll | Conductive copper fabric tape / adhesive copper tape | Robu.in / local market | ₹350/roll | Estimate | Nil | Available | B/C | ₹350 estimate | Quote Required |
 | 4 | Sensors | Load cells 50 kg | Half-bridge 50 kg aluminium body, ×4 | Generic 50 kg half-bridge load cell | Robu.in / Robocraze | ₹100 ea. | Likely incl. | Nominal | In stock | B | ₹100 ea. | Verified |
-| 5 | Sensors | Thermal camera | MLX90640, 32×24 px, 55° FOV, I2C | MLX90640 IR thermal camera breakout (7Semi or Waveshare) | Robocraze / Robu.in | ₹5,000 | Likely incl. | Nominal | In stock | B | ₹5,000 | Verified |
+| 5 | Sensors | Thermal camera (spatial) | MLX90640, 32×24 px, 55° FOV, I2C | MLX90640 IR thermal camera breakout (7Semi or Waveshare) | Robocraze / Robu.in | ₹5,000 | Likely incl. | Nominal | In stock | B | ₹5,000 | Verified |
+| 5B | Sensors | **NEW: Point temperature sensor** | Melexis MLX90614, single-pixel IR thermometer, ±0.2°C, I2C, 3.3 V | **Melexis MLX90614ESF-BCC or DCH** | Robu.in / local market | Not in original | — | Nominal | Available | B | **₹700 (add)** | **New item added — required for clinical accuracy** |
 | 6 | Processing | Raspberry Pi 5 (8 GB) | RPi 5, 8 GB LPDDR4X, BCM2712, GPIO | Raspberry Pi 5 — 8 GB (official) | ThinkRobotics | ₹9,500 | Likely incl. | Nil | In stock | B | **₹8,249 (ThinkRobotics Aug 2026)** | **Price corrected — lower verified price** |
 | 7 | Processing | RPi 5 Active Cooler | Official RPi 5 active cooler | Official Raspberry Pi 5 Active Cooler | Robu.in | ₹460 | Likely incl. | Nominal | In stock | B | ₹460 | Verified |
 | 8 | Processing | MicroSD 64 GB A2 | 64 GB A2 Class 10 microSD | SanDisk Extreme 64 GB or Samsung Evo Select 64 GB | Amazon India / Flipkart | ₹900 | Yes | Free (above threshold) | In stock | A | ₹900 | Verified |
@@ -51,7 +52,7 @@
 | 16 | Electronics | Logic level converters ×2 | 4-ch bi-directional I2C/SPI level shifter | Logic Level Converter Module ×2 | Robu.in | ₹80 ea. | Likely incl. | Nominal | In stock | B | ₹80 ea. | Verified |
 | 17 | Power | 12 V 5 A DC supply | Regulated 12 V 5 A DC bench supply | Generic regulated 12 V/5 A DC supply | Robu.in / local market | ₹700 | Estimate | Nil | Available | B/C | ₹700 | Quote Required |
 | 18 | Power | LM2596 buck converters ×3 | Adjustable step-down buck converter, 1.5 A | LM2596 DC-DC adjustable buck module | Robu.in / Robocraze | ₹60 ea. | Likely incl. | Nominal | In stock | B | ₹60 ea. | Verified |
-| 19 | Storage | External SSD 500 GB | USB 3.2 portable SSD, 500 GB | Samsung T7 (standard) 500 GB USB-A/C | Amazon India / Flipkart | ₹5,500 | Yes | Free | In stock | A | ₹5,500 | Verified |
+| — | Storage | ~~External SSD 500 GB~~ | **REMOVED from budget** | Not purchased — laptop present at all sessions; data stored on laptop; 64 GB microSD buffers per-session data; V7 USB flash drive provides backup | — | ₹5,500 | — | — | — | — | **₹0 (removed)** | **Item removed — laptop storage sufficient** |
 | 20 | Comms | USB-to-UART cable | CH340 USB-to-UART TTL debug cable | CH340 USB-to-UART debug cable | Robu.in | ₹120 | Likely incl. | Nominal | In stock | B | ₹120 | Verified |
 | — | Missing | **RPi 5 protective case** | GPIO-accessible case for Raspberry Pi 5 | Waveshare Clear Acrylic Case for RPi 5 | Robu.in | Not budgeted | — | Nominal | In stock | B | **₹400 (add)** | **Missing component identified** |
 | — | Missing | **LD6002 USB-TTL adapter** | USB-to-UART adapter for LD6002 debug | CP2102 USB-to-UART module | Robu.in / Robocraze | Not budgeted | — | Nominal | In stock | B | **₹80 (add)** | **Missing component identified** |
@@ -168,7 +169,8 @@ The following items should be **accessed through institutional resources** rathe
 | 2 | Velostat pressure sensor sheets ×4 | 2,400 | 1,900 | −500 |
 | 3 | Conductive electrode tape ×2 rolls | 700 | 700 | — |
 | 4 | Load cells 50 kg ×4 | 400 | 400 | — |
-| 5 | MLX90640 thermal camera | 5,000 | 5,000 | — |
+| 5 | MLX90640 thermal camera (spatial) | 5,000 | 5,000 | — |
+| 5B | **MLX90614 point temperature sensor (NEW)** | 0 | 700 | +700 |
 | 6 | Raspberry Pi 5 (8 GB) | 9,500 | 8,249 | −1,251 |
 | 7 | RPi 5 Active Cooler | 460 | 460 | — |
 | 8 | MicroSD 64 GB A2 | 900 | 900 | — |
@@ -182,11 +184,11 @@ The following items should be **accessed through institutional resources** rathe
 | 16 | Logic level converters ×2 | 160 | 160 | — |
 | 17 | 12 V 5 A DC power supply | 700 | 700 | — |
 | 18 | LM2596 buck converters ×3 | 180 | 180 | — |
-| 19 | External USB SSD 500 GB (Samsung T7) | 5,500 | 5,500 | — |
+| 19 | ~~External USB SSD 500 GB~~ — **REMOVED** | 5,500 | **0** | **−5,500** |
 | 20 | CH340 USB-to-UART debug cable | 120 | 120 | — |
 | NEW | Raspberry Pi 5 case (acrylic, GPIO access) | 0 | 400 | +400 |
 | NEW | CP2102 USB-to-UART module (LD6002 config) | 0 | 80 | +80 |
-| **Hardware Subtotal** | | **29,995** | **29,824** | **−171** |
+| **Hardware Subtotal** | | **29,995** | **25,024** | **−4,971** |
 | F1 | Hospital bed | 0 | 0 | — |
 | F2 | Foam mattress (only if needed) | 1,500 | 1,500 | — |
 | F3 | Headboard radar mount bracket | 400 | 400 | — |
@@ -216,19 +218,19 @@ The following items should be **accessed through institutional resources** rathe
 
 | Category | Verified Amount (₹) |
 |---|---:|
-| Core Hardware (sensors + processing + MCU) | 19,509 |
+| Core Hardware — sensors (incl. MLX90614) + processing + MCU | 20,209 |
 | Electronics & Power (ADC, mux, passives, power) | 2,305 |
-| Storage & Communication (SSD + cables + debug) | 5,780 |
+| Communication & Debug (CH340 + CP2102; SSD removed) | 280 |
 | Prototype Fabrication | 4,460 |
 | Calibration & Experimentation | 3,350 |
 | Data & Storage (overlap with above) | *(included above)* |
 | Validation | 2,950 |
 | Documentation | *(included in Experimentation D6 + Validation V6)* |
-| **Procurement Subtotal** | **38,354** |
-| Contingency (~23% of hardware — reflects radar price change) | **4,891** |
-| **TOTAL** | **₹43,245** |
+| **Procurement Subtotal** | **33,554** |
+| Contingency (~15% of hardware subtotal) | **3,891** |
+| **TOTAL** | **₹38,445** |
 
-> **Surplus vs. ₹1,00,000 cap: ₹56,755 uncommitted.** This is appropriate and reflects the project document's own ₹50,000–₹70,000 estimate.
+> **Surplus vs. ₹1,00,000 cap: ₹61,555 uncommitted.** This is appropriate and reflects a well-constrained prototype budget.
 
 ---
 
@@ -256,7 +258,7 @@ All links below are to established Indian electronics retailers. Prices must be 
 | Breadboard + jumper wires | Robu.in | https://robu.in | **High** |
 | LM2596 buck converter | Robu.in / Robocraze | https://robu.in | **High** |
 | CP2102 USB-UART module | Robu.in | https://robu.in | **High** |
-| Samsung T7 500 GB SSD | Amazon India / Flipkart | https://amazon.in | **High** |
+| MLX90614 point temperature sensor (BCC or DCH variant) | Robu.in / local market | https://robu.in | **Medium** (verify BCC vs DCH variant availability) |
 | 12 V 5 A DC power supply | Local Coimbatore electronics market (SP Road equivalent, Coimbatore) | — | **Quote Required** |
 | Conductive copper tape | Robu.in / local market | https://robu.in | **Low (estimate)** |
 
@@ -271,9 +273,9 @@ All links below are to established Indian electronics retailers. Prices must be 
 | 🔴 Critical | HLK-LD6002 vital sign radar (replaces LD2450) | ₹2,200 | Rajguru Electronics / Tektown |
 | 🟠 High | Raspberry Pi 5 (8 GB) | ₹8,249 | ThinkRobotics |
 | 🟠 High | RPi 5 active cooler + 27 W PSU | ₹1,660 | Robu.in |
-| 🟠 High | MLX90640 thermal camera | ₹5,000 | Robocraze |
+| 🟠 High | MLX90640 spatial thermal camera | ₹5,000 | Robocraze |
+| 🟠 High | **MLX90614 point temperature sensor (NEW)** | ₹700 | Robu.in / local market |
 | 🟠 High | Velostat sheets ×4 | ₹1,900 | Thingbits Electronics |
-| 🟠 High | Samsung T7 500 GB SSD | ₹5,500 | Amazon India |
 | 🟡 Medium | ESP32 WROOM-32 (×1) | ₹450 | Robu.in |
 | 🟡 Medium | HX711 ×2, mux ×3, ADS1115 ×2 | ₹505 | Robu.in / ElectronicsComp |
 | 🟡 Medium | Load cells ×4 + HX711 modules | ₹560 | Robu.in |
