@@ -5,7 +5,7 @@
 **Location:** Coimbatore, Tamil Nadu, India  
 **Funding Limit:** ₹1,00,000  
 **Prepared / Verified:** August 2026  
-**Updated Total:** ₹60,940  
+**Updated Total:** ₹63,740  
 
 > All prices are **verified / corrected** as per the Budget Verification Report (BudgetVerification.md).  
 > Items marked ⚠️ require a supplier quotation before final procurement.  
@@ -85,14 +85,15 @@
 | # | Item | Required Specification | Recommended Model | Purpose / Why It Is Used / Where It Is Used | Unit Price (₹) | Qty | Total Price (₹) |
 |---|---|---|---|---|---:|---:|---:|
 | V1 | Reference Breath Counter (Stopwatch) | Digital stopwatch with split-lap function | Standard digital sports stopwatch | Gold-standard reference for respiratory rate validation. A trained observer manually counts breaths over 60-second windows simultaneously with the radar system. Simple, inexpensive, and scientifically rigorous reference for respiratory rate comparison and radar accuracy assessment. | 200 | 1 | 200 |
-| V2 | Reference Platform Weighing Scale | Medical calibrated platform scale, ≥150 kg capacity | Institutional access — college biomedical / physiotherapy / hospital calibrated scale 🏛️ | Validates load-cell total weight readings against a calibrated reference. Provides ground-truth weight measurements for comparison against the load-cell system. **Do not purchase — access through institution.** | 0 🏛️ | 1 | 0 |
-| V3 | Reference Spirometer / Peak Flow Meter | Portable incentive spirometer or peak flow meter | Institutional access — college biomedical lab or hospital collaborator 🏛️ | Comparative respiratory data alongside the radar respiration signal for correlation analysis. Records reference respiratory effort values during volunteer sessions for comparison with mmWave radar estimates. **Do not purchase — access through institution.** | 0 🏛️ | 1 | 0 |
-| V4 | Reference Pulse Oximeter (SpO₂ + HR) | Fingertip SpO₂ + heart rate monitor | Institutional access — college nursing lab / hospital teaching ward 🏛️ | Reference heart rate recording during radar-HR correlation experiments. Not claimed as a system replacement — used only to assess the quality of radar-derived heartbeat signals. **Do not purchase — access through institution.** | 0 🏛️ | 1 | 0 |
+| V2 | Reference Platform Weighing Scale | Digital body weight scale, ≥150 kg capacity, 0.1 kg resolution | **Dr. Trust / HealthSense digital weighing scale** 🏛️ | Validates load-cell total weight readings against a calibrated reference. **Prefer institutional access (college biomedical / physiotherapy / hospital calibrated scale) — purchase only if unavailable.** Budget reserved as a fallback. Source: Amazon India / Flipkart, verified ₹1,000–₹1,500 range. | 1,200 🏛️ | 1 | 1,200 |
+| V3 | Reference Spirometer / Peak Flow Meter | Manual peak flow meter or incentive spirometer (3-ball type) | **Manual peak flow meter (Rossmax / LungChek)** or standard incentive spirometer 🏛️ | Comparative respiratory data alongside the radar respiration signal for correlation analysis. Records reference respiratory effort values during volunteer sessions. **Prefer institutional access (college biomedical lab / hospital) — purchase only if unavailable.** Source: Amazon India / 1mg, verified ₹500–₹900 range. | 600 🏛️ | 1 | 600 |
+| V4 | Reference Pulse Oximeter (SpO₂ + HR) | Fingertip SpO₂ + heart rate monitor, OLED display | **Contec CMS50D fingertip pulse oximeter** 🏛️ | Reference heart rate recording during radar-HR correlation experiments. Not claimed as a system replacement — used only to assess quality of radar-derived heartbeat signals alongside SpO₂ readings. **Prefer institutional access (college nursing lab / hospital) — purchase only if unavailable.** Source: Amazon India / Flipkart, verified ₹850–₹1,300 range. | 1,000 🏛️ | 1 | 1,000 |
 | V5 | Volunteer Honoraria | Nominal cash honoraria for healthy volunteer participants (non-invasive sessions) | Cash honoraria — ₹200 per session × ~10 sessions | Ethical recognition for volunteer participants. Required for ethical experimental conduct and volunteer recruitment. Institutional ethics clearance (IRB) must be obtained before any volunteer sessions begin. | 200 | 10 sessions | 2,000 |
 | V6 | Ethics Documentation Printing | Informed consent forms, ethics application, data privacy forms — printed sets | Printed forms — local print shop | Institutional ethics (IRB) clearance documentation. Mandatory before any human-participant data collection begins. Covers informed consent forms, data handling policy, and ethics committee submission package. | 500 | 1 | 500 |
 | V7 | Validation Backup Storage (USB Flash Drive) | 32 GB USB flash drive, USB 3.0 | Standard 32 GB USB 3.0 flash drive | Backup of the complete validation dataset for supervisor review, result verification, and research paper preparation. Separate from the external SSD (Item 19) which is the primary data store on the prototype. | 250 | 1 | 250 |
 
-**Validation Subtotal: ₹2,950**
+**Validation Subtotal: ₹5,750**  
+> 🏛️ *Items V2, V3, V4 are priced as a fallback — institutional access is strongly preferred. If all three are sourced through college labs, validation cost reduces by ₹2,800 to ₹2,950.*
 
 ---
 
@@ -103,11 +104,12 @@
 | Core Hardware — Section A (Items 1–20 + 5B + NEW-1, NEW-2; SSD removed) | 39,965 |
 | Prototype Fabrication — Section B (F1–F10) | 10,160 |
 | Data & Experimentation — Section C (D1–D7) | 3,350 |
-| Validation — Section D (V1–V7) | 2,950 |
-| **Procurement Subtotal** | **56,425** |
+| Validation — Section D (V1–V7, incl. conditional V2/V3/V4) | 5,750 |
+| **Procurement Subtotal** | **59,225** |
 | Contingency (~8% of procurement subtotal) | **4,515** |
-| **TOTAL** | **₹60,940** |
-| **Surplus vs. ₹1,00,000 cap** | **₹39,060 uncommitted** |
+| **TOTAL** | **₹63,740** |
+| **Surplus vs. ₹1,00,000 cap** | **₹36,260 uncommitted** |
+| *If V2/V3/V4 sourced institutionally (best case)* | *₹60,940 total* |
 
 ---
 

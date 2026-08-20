@@ -209,10 +209,13 @@ The following items should be **accessed through institutional resources** rathe
 | D7 | Volunteer session consumables | 500 | 500 | — |
 | **Experimentation Subtotal** | | **3,350** | **3,350** | **—** |
 | V1 | Reference stopwatch | 200 | 200 | — |
+| V2 | Reference weighing scale 🏛️ (conditional) | 0 | 1,200 | +1,200 |
+| V3 | Reference spirometer / peak flow meter 🏛️ (conditional) | 0 | 600 | +600 |
+| V4 | Reference pulse oximeter 🏛️ (conditional) | 0 | 1,000 | +1,000 |
 | V5 | Volunteer honoraria (~10 sessions) | 2,000 | 2,000 | — |
 | V6 | Ethics documentation printing | 500 | 500 | — |
 | V7 | Validation USB flash drive 32 GB | 250 | 250 | — |
-| **Validation Subtotal** | | **2,950** | **2,950** | **—** |
+| **Validation Subtotal** | | **2,950** | **5,750** | **+2,800** |
 
 ### 8B. Final Category-Wise Summary
 
@@ -224,13 +227,16 @@ The following items should be **accessed through institutional resources** rathe
 | Prototype Fabrication | 4,460 |
 | Calibration & Experimentation | 3,350 |
 | Data & Storage (overlap with above) | *(included above)* |
-| Validation | 2,950 |
+| Validation (incl. conditional V2/V3/V4 fallback at ₹2,800) | 5,750 |
 | Documentation | *(included in Experimentation D6 + Validation V6)* |
-| **Procurement Subtotal** | **33,554** |
+| **Procurement Subtotal** | **36,354** |
 | Contingency (~15% of hardware subtotal) | **3,891** |
-| **TOTAL** | **₹38,445** |
+| **TOTAL (worst case — all V2/V3/V4 purchased)** | **₹40,245** |
+| **TOTAL (best case — V2/V3/V4 via institution)** | **₹38,445** |
 
-> **Surplus vs. ₹1,00,000 cap: ₹61,555 uncommitted.** This is appropriate and reflects a well-constrained prototype budget.
+> 🏛️ *V2 (weighing scale ₹1,200), V3 (peak flow meter ₹600), V4 (pulse oximeter ₹1,000) are now priced as a purchase fallback. Institutional access remains strongly preferred for all three.*
+
+> **Surplus vs. ₹1,00,000 cap: ₹59,755 uncommitted** (worst case); **₹61,555 uncommitted** (best case with institutional access).
 
 ---
 
@@ -259,8 +265,11 @@ All links below are to established Indian electronics retailers. Prices must be 
 | LM2596 buck converter | Robu.in / Robocraze | https://robu.in | **High** |
 | CP2102 USB-UART module | Robu.in | https://robu.in | **High** |
 | MLX90614 point temperature sensor (BCC or DCH variant) | Robu.in / local market | https://robu.in | **Medium** (verify BCC vs DCH variant availability) |
-| 12 V 5 A DC power supply | Local Coimbatore electronics market (SP Road equivalent, Coimbatore) | — | **Quote Required** |
+| 12 V 5 A DC power supply | Local Coimbatore electronics market | — | **Quote Required** |
 | Conductive copper tape | Robu.in / local market | https://robu.in | **Low (estimate)** |
+| **V2** Dr. Trust / HealthSense digital weighing scale | Amazon India / Flipkart | https://amazon.in | **High** (₹1,000–₹1,500; buy only if institutional access unavailable) |
+| **V3** Rossmax / LungChek manual peak flow meter | Amazon India / 1mg | https://amazon.in | **High** (₹500–₹900; buy only if institutional access unavailable) |
+| **V4** Contec CMS50D fingertip pulse oximeter | Amazon India / Flipkart | https://amazon.in | **High** (₹850–₹1,300; buy only if institutional access unavailable) |
 
 ---
 
@@ -285,14 +294,17 @@ All links below are to established Indian electronics retailers. Prices must be 
 | 🟢 Low | MicroSD 64 GB + debug cables + CP2102 | ₹1,100 | Amazon / Robu.in |
 | 🟢 Low | Calibration weights | ₹700 | Local market |
 | 🟢 Low | Volunteer consumables, documentation | ₹1,400 | Local procurement |
+| 🏛️ Conditional | **V2** Weighing scale (buy if inst. access unavailable) | ₹1,200 | Amazon / Flipkart |
+| 🏛️ Conditional | **V3** Peak flow meter (buy if inst. access unavailable) | ₹600 | Amazon / 1mg |
+| 🏛️ Conditional | **V4** Pulse oximeter — Contec CMS50D (buy if inst. access unavailable) | ₹1,000 | Amazon / Flipkart |
 
-### What Should Be Borrowed / Accessed Through Institution
+### What Should Be Borrowed / Accessed Through Institution (preferred)
 
 - Hospital bed / metal cot — **do not purchase**
-- Reference weighing scale — **do not purchase**
-- Reference spirometer — **do not purchase**
-- Reference pulse oximeter — **do not purchase**
-- Reference clinical thermometer — **do not purchase**
+- Reference clinical thermometer — **do not purchase** (use college biomedical / nursing lab)
+- Reference weighing scale (V2) — **strongly prefer institutional access; budget ₹1,200 reserved as fallback**
+- Reference spirometer (V3) — **strongly prefer institutional access; budget ₹600 reserved as fallback**
+- Reference pulse oximeter (V4) — **strongly prefer institutional access; budget ₹1,000 reserved as fallback**
 
 ### What Should Be Fabricated
 

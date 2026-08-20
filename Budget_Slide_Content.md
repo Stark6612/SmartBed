@@ -13,7 +13,7 @@
 
 ## 📝 Slide Descriptor Text (2–3 sentences max)
 
-> A total prototype budget of **₹60,940** — well within the ₹1,00,000 institutional limit — funds five sensor modalities, an AI-capable edge computing platform, mechanical fabrication, and clinical validation. Clinical reference equipment (weighing scale, spirometer, pulse oximeter) is accessed through institutional labs at no cost, protecting budget for core sensors and computing.
+> A total prototype budget of **₹60,940–₹63,740** funds five sensor modalities, an AI-capable edge computing platform, mechanical fabrication, and clinical validation — well within the ₹1,00,000 institutional limit. Clinical reference instruments (weighing scale, spirometer, pulse oximeter) are sourced through institutional labs wherever possible; a priced fallback of ₹2,800 is reserved in case any are unavailable.
 
 ---
 
@@ -37,15 +37,16 @@ pie title Smart Bed V2 — Budget Breakdown (Total: ₹60,940)
 
 | Category | Key Components | ₹ | % |
 |---|---|---:|---:|
-| 🖥️ Processing Platform | Raspberry Pi 5 (8 GB), active cooler, 64 GB microSD, 27 W PSU | 24,520 | 40.2% |
-| 📡 Sensors | HLK-LD6002 radar, Velostat pressure matrix ×4, load cells ×4, MLX90640 spatial camera, MLX90614 temp sensor | 11,600 | 19.0% |
-| 🔧 Prototype Fabrication | Bed/cot, foam mattress, radar & camera mounts, cable management, enclosures | 10,160 | 16.7% |
-| 🧪 Data & Validation | Calibration weights, consumables, volunteer honoraria, ethics documentation | 6,300 | 10.3% |
-| ⚙️ MCU, Electronics & Peripherals | ESP32, HX711 ×2, mux ×3, ADS1115 ×2, passives, logic converters, RPi case, debug cables | 3,845 | 6.3% |
-| 🛡️ Contingency (~8%) | Component failure, price variation, shipping buffer | 4,515 | 7.4% |
+| 🖥️ Processing Platform | Raspberry Pi 5 (8 GB), active cooler, 64 GB microSD, 27 W PSU | 24,520 | 38.5% |
+| 📡 Sensors | HLK-LD6002 radar, Velostat matrix ×4, load cells ×4, MLX90640 spatial camera, MLX90614 temp sensor | 11,600 | 18.2% |
+| 🔧 Prototype Fabrication | Bed/cot, foam mattress, radar & camera mounts, cable management, enclosures | 10,160 | 15.9% |
+| 🧪 Data & Validation | Calibration, consumables, volunteer honoraria, ethics docs + conditional clinical ref. instruments | 9,100 | 14.3% |
+| ⚙️ MCU, Electronics & Peripherals | ESP32, HX711 ×2, mux ×3, ADS1115 ×2, passives, logic converters, RPi case, debug cables | 3,845 | 6.0% |
+| 🛡️ Contingency (~8%) | Component failure, price variation, shipping buffer | 4,515 | 7.1% |
 | | | | |
-| **TOTAL** | *Within ₹1,00,000 institutional limit* | **₹60,940** | **100%** |
-| **Surplus** | *Available for Phase 2 / clinical-site testing* | **₹39,060** | — |
+| **TOTAL (best case)** | *V2/V3/V4 via institutional labs* | **₹60,940** | — |
+| **TOTAL (worst case)** | *V2/V3/V4 purchased (₹2,800 extra)* | **₹63,740** | — |
+| **Surplus vs. ₹1,00,000 limit** | *Available for Phase 2* | **₹36,260–₹39,060** | — |
 
 ---
 
@@ -54,10 +55,11 @@ Place these as 4 highlight boxes / stat cards along the bottom of the slide.
 
 | Stat | Value |
 |---|---|
-| 💰 Total Budget | ₹60,940 |
+| 💰 Total Budget (best case) | ₹60,940 |
+| 💰 Total Budget (worst case) | ₹63,740 |
 | 🏛️ Funding Limit | ₹1,00,000 |
-| ✅ Surplus for Phase 2 | ₹39,060 |
-| 🏥 Institutional Access Saves | ~₹15,000–₹25,000 |
+| ✅ Surplus for Phase 2 | ₹36,260–₹39,060 |
+| 🏛️ Clinical instruments (V2/V3/V4) | ₹2,800 reserved as fallback |
 
 ---
 

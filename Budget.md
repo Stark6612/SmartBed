@@ -138,13 +138,15 @@ The prototype does not claim to replace or replicate ECG, blood pressure monitor
 | # | Item | Specification | Qty | Unit Cost (₹) | Total (₹) | Purchase / Access | Purpose |
 |---|---|---|---|---:|---:|---|---|
 | V1 | Reference breath counter | Digital stopwatch for manual respiratory rate counting by trained observer | 1 | 200 | 200 | Purchase | Gold-standard reference for respiratory rate validation: trained observer manually counts breaths over 60-second windows simultaneously with radar. Inexpensive but scientifically rigorous. |
-| V2 | Reference platform weighing scale | Medical calibrated platform scale, ≥150 kg capacity | 1 | 0 | 0 | **Institutional Access.** Use college/hospital calibrated weighing scale. | Validates load-cell total weight readings against a calibrated reference. No purchase required. |
-| V3 | Reference spirometer | Portable incentive spirometer or peak flow meter | 1 | 0 | 0 | **Institutional Access.** College biomedical lab or hospital collaborator. | Comparative respiratory data alongside radar respiration signal for correlation analysis. |
-| V4 | Reference pulse oximeter (SpO₂) | Fingertip SpO₂ + HR monitor | 1 | 0 | 0 | **Institutional Access.** Departmental / hospital SpO₂ probe. | Used only for reference HR recording during radar-HR correlation experiments. Not claimed as a system replacement. |
+| V2 | Reference platform weighing scale | Digital body weight scale, ≥150 kg capacity, 0.1 kg resolution | 1 | 1,200 | 1,200 | **Institutional Access preferred** 🏛️ — purchase only if unavailable | Validates load-cell weight readings against a calibrated reference. Institutional access strongly preferred. **Model: Dr. Trust / HealthSense digital scale. Source: Amazon / Flipkart, ₹1,000–₹1,500 verified range.** |
+| V3 | Reference spirometer / peak flow meter | Manual peak flow meter or 3-ball incentive spirometer | 1 | 600 | 600 | **Institutional Access preferred** 🏛️ — purchase only if unavailable | Comparative respiratory reference data alongside radar respiration signal for correlation. Institutional access strongly preferred. **Model: Rossmax / LungChek manual peak flow meter. Source: Amazon / 1mg, ₹500–₹900 range.** |
+| V4 | Reference pulse oximeter (SpO₂ + HR) | Fingertip SpO₂ + HR monitor, OLED display | 1 | 1,000 | 1,000 | **Institutional Access preferred** 🏛️ — purchase only if unavailable | Reference HR recording during radar-HR correlation experiments. **Model: Contec CMS50D. Source: Amazon / Flipkart, ₹850–₹1,300 range.** |
 | V5 | Volunteer honoraria | Nominal honoraria for healthy volunteer participants (non-invasive sessions) | 1 | 2,000 | 2,000 | Expense | Ethical recognition for ~10 volunteer sessions (₹200/session). Required for ethical experimental conduct and volunteer recruitment. |
 | V6 | Ethics documentation printing | Informed consent forms, ethics application, data privacy forms | 1 | 500 | 500 | Purchase | Institutional ethics clearance documentation. Mandatory before any human-participant data collection. |
 | V7 | Validation backup storage | 32 GB USB flash drive for data sharing and backup with research supervisor | 1 | 250 | 250 | Purchase | Backup of validation dataset for supervisor review, result verification, and research paper preparation. |
-| **Validation Total** | | | | | **₹2,950** | | |
+| **Validation Total** | | | | | **₹5,750** | | |
+
+> 🏛️ *V2, V3, V4 are priced as a purchase fallback. Institutional access is strongly preferred for all three. If sourced through college labs, validation cost reduces to ₹2,950.*
 
 ---
 
@@ -173,11 +175,12 @@ The contingency is intended to cover:
 | Hardware (sensors + MLX90614, processing, MCU, electronics, power, communication) | 25,195 |
 | Prototype Fabrication (mounting, wiring, enclosures, mechanical) | 4,460 |
 | Data & Experimentation (calibration, test materials, consumables) | 3,350 |
-| Validation (volunteer sessions, ethics documentation, reference items) | 2,950 |
+| Validation (incl. conditional V2/V3/V4 fallback at ₹2,800) | 5,750 |
 | Contingency | 4,245 |
-| **TOTAL** | **₹40,200** |
+| **TOTAL** | **₹43,000** |
+| *Best case (V2/V3/V4 via institution)* | *₹40,200* |
 
-> **Surplus vs. ₹1,00,000 cap: ₹59,800 uncommitted.**  
+> **Surplus vs. ₹1,00,000 cap: ₹57,000 uncommitted** (worst case, all validation items purchased); **₹59,800 uncommitted** if V2/V3/V4 sourced institutionally.  
 > This surplus is intentional. It accurately reflects the project document's own estimate of ₹50,000–₹70,000. Artificially inflating the budget to consume the full ₹1 lakh would mislead the funding committee and waste institutional resources.  
 >
 > **Recommended use of surplus:** Retain in institutional account for Phase 2 — potential clinical-site testing, improved sensor hardware (higher-resolution radar or pressure mat for follow-up study), or conference paper submission and travel fees.
@@ -202,14 +205,14 @@ The following items should preferably be **accessed through institutional resour
 
 ## 11. Budget Justification
 
-### Hardware — ₹29,995 (66.7% of funded budget)
+### Hardware — ₹25,195 (58.6% of funded budget)
 
 The hardware budget directly funds the four sensor modalities and the processing stack specified in the project document. Key justification decisions:
 
-- **mmWave radar (₹650):** The Hi-Link HLK-LD2450 is chosen over TI evaluation modules (₹46,000+). For the prototype objective — demonstrating respiratory rate estimation and occupancy detection — the LD2450 provides 24 GHz FMCW sensing at the research scale. Research papers demonstrate respiratory detection using Hi-Link modules in comparable contexts. The cost saving is ₹45,350, which is redirected to more research-value activities.
+- **mmWave radar (₹2,200):** Replaced with HLK-LD6002 (60 GHz vital-sign FMCW radar) — the original LD2450 cannot extract respiratory rate from a stationary patient. See BudgetVerification.md.
 - **Pressure sensor matrix (₹3,100 total materials):** The Velostat DIY approach is standard in pressure-mapping research. It produces a pressure distribution map sufficient for body position estimation, occupancy detection, and movement tracking — all stated research objectives. Commercial pressure-mat systems (₹50,000+) would consume the entire hardware budget for one component.
-- **Thermal camera (₹5,000):** The MLX90640 is extensively validated in contactless temperature research prototypes. Its 32×24 pixel resolution is appropriate for skin-temperature trending across a hospital bed footprint.
-- **Raspberry Pi 5 8 GB (₹9,500):** Explicitly specified in the project document. Required for simultaneous real-time AI inference, MQTT brokering, FastAPI backend, and database storage.
+- **Thermal cameras (₹5,700):** MLX90640 (₹5,000) provides spatial thermal mapping and occupancy detection. MLX90614 (₹700) provides ±0.2°C point temperature accuracy for clinical-grade fever detection — the MLX90640 alone (±1.5°C) is insufficient for publishable temperature results.
+- **Raspberry Pi 5 8 GB (₹20,000):** Explicitly specified in the project document. Required for simultaneous real-time AI inference, MQTT brokering, FastAPI backend, and database storage.
 
 ### Prototype Fabrication — ₹4,460 (9.9%)
 
