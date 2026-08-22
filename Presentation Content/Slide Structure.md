@@ -1,212 +1,212 @@
-# Slide Structure — Smart Bed V2 Proposal Presentation
+# Presentation Slide Structure — Smart Bed V2
 
 > **Presentation Overview:** 15-Slide Presentation Structure  
 > **Target Audience:** Project Evaluators, Department Head, Technical Committee, Institutional Reviewers  
-> **Key Shift:** Funding ask and validation plan slides have been replaced with dedicated Technical Roadmap, Impact Summary, Title, and Thank You slides.
+> **Budget Reflected:** ₹64,280 (5-sensor full research prototype)
 
 ---
 
-## Slide Overview Table
+## 📋 Master 15-Slide Presentation Table
 
-| Slide # | Slide Title | Core Purpose |
+| Slide # | Slide Title | Purpose |
 |---|---|---|
-| **1** | Title Slide | Project Title, Subtitle, Presenters & Institutional Affiliation |
-| **2** | Problem Statement | The Monitoring Gap in Resource-Constrained Hospital Wards |
-| **3** | Limitations of Contact-Based Monitoring | Why traditional wired sensors fail in high-workload wards |
-| **4** | State of Contactless Monitoring & Clinical Evidence | Proving technology feasibility using recent 2025–2026 clinical studies |
-| **5** | The "Silent Failure" Problem | Why single-sensor contactless systems fail 30% of the time without warning |
-| **6** | Proposed Solution: Bed-Retrofit Sensing Platform | The core concept: retrofitting standard hospital cots at minimal cost |
-| **7** | Five-Sensor Architecture & 3 Physiological Pathways | Radar (air), Geophone (structural), Pressure Matrix, Load Cells, Thermal |
-| **8** | Confidence-Aware Multimodal Fusion Engine | Rule-based state machine detecting movement, visitors, and blankets |
-| **9** | Multi-Patient Simulation & Explainable AI (XAI) | Phase 2 software ward simulation + XGBoost priority queue + SHAP explanations |
-| **10** | Nurse Dashboard & Actionable Observation Alerts | UI design: single-bed observation + ward priority queue without diagnostic overclaims |
-| **11** | Scientific Evidence Base (2025–2026 Literature) | Backing every sensor selection with 8 peer-reviewed research papers (R1–R8) |
-| **12** | Prototype Budget & Economic Viability | Cost breakdown: ₹64,280 prototype vs. ₹10–50 lakh commercial smart beds |
-| **13** | Core Research Novelty & Defensible Research Gap | Defining the exact academic contribution and technical gap filled |
-| **14** | Summary Impact & Technical Roadmap | 18-week execution milestones and expected research outputs |
-| **15** | Thank You | Q&A, Contact Details, Project Repository Link |
+| **1** | **Project Title** | Project name, one-line vision, team/institution |
+| **2** | **The Monitoring Gap in Indian Hospital Wards** | Clinical problem: monitoring burden, staff workload, missed/limited continuous observations |
+| **3** | **Why Contact-Based Monitoring Has Limits** | Wires, attachment, displacement, discomfort, maintenance and fragmented monitoring |
+| **4** | **Contactless Systems Already Work — in Labs and Hospitals** | Establish evidence that contactless monitoring is technically feasible using recent research |
+| **5** | **Why Existing Contactless Systems Are Not the Answer** | Cost, infrastructure requirements, limited integration and limitations of single-modality systems |
+| **6** | **The Silent Failure Problem** | Explain how a sensor can produce unreliable data without clearly indicating that the measurement is unreliable |
+| **7** | **Our Approach: The Hospital Bed as a Sensing Platform** | Retrofit existing beds/cots rather than replacing them; unobtrusive sensing architecture |
+| **8** | **Five Sensors — Three Independent Measurement Pathways** | Explain the sensing strategy and why independent/complementary pathways improve reliability |
+| **9** | **The Confidence-Aware Fusion Engine** | Core research concept: determine *whether a measurement can be trusted* before using it |
+| **10** | **From One Bed to a Ward** | How the architecture can eventually scale to multiple beds, patient prioritisation and ward-level monitoring |
+| **11** | **What the Dashboard Tells Nurses** | Show practical output: occupancy, RR, confidence, position, movement and alerts — without diagnostic claims |
+| **12** | **Evidence Base: Recent Research (2025–2026)** | Present the key papers supporting the sensing technologies, multimodal monitoring and clinical direction |
+| **13** | **Budget: ₹64,280 for the Full Prototype** | Show realistic prototype expenditure and explain how the remaining funding can support further research |
+| **14** | **Research Novelty & Proposed Contribution** | Clearly state the research gap and what your project contributes: multimodal pathways + confidence-aware fusion + affordable retrofit architecture |
+| **15** | **Thank You** | Final project statement/contact/team information |
 
 ---
 
 ---
 
-## Detailed Slide-by-Slide Breakdown
+## 🔍 Slide-by-Slide Content & Visual Details
 
-### 📍 Slide 1: Title Slide
-- **Title:** AI-Powered Multimodal Contactless Patient Monitoring System
-- **Subtitle:** Using the Hospital Bed as an Unobtrusive Sensing Platform
-- **Key Points:**
-  - Student Research Team & Department Affiliation
-  - Project Location: Coimbatore, Tamil Nadu, India
-  - Prototype Focus: Low-Cost, Quality-Oriented Research Prototype
-- **Visual Suggestion:** High-impact hero graphic showing the 5-sensor retrofitted hospital bed layout.
-
----
-
-### 📍 Slide 2: Problem Statement
-- **Title:** The Vital Signs Monitoring Gap in Resource-Constrained Wards
-- **Core Message:** High patient-to-nurse ratios (15–40 patients per nurse) in general and government hospital wards lead to infrequent vital sign checks (every 4–8 hours).
-- **Key Points:**
-  - Patient deterioration between manual rounds often goes unnoticed until critical.
-  - ICU continuous monitoring equipment is too expensive and scarce for general ward deployment.
-  - Need for an affordable, continuous, non-intrusive observation solution.
-- **Visual Suggestion:** Split visual showing a crowded hospital ward vs. a timeline illustrating missing vital checks between nurse rounds.
+### 📍 Slide 1: Project Title
+- **Slide Title:** Project Title
+- **Purpose:** Project name, one-line vision, team/institution.
+- **Key Content:**
+  - **Project Title:** AI-Powered Multimodal Contactless Patient Monitoring and Clinical Decision Support System Using the Hospital Bed as an Unobtrusive Sensing Platform
+  - **One-Line Vision:** Transforming standard hospital cots into intelligent, confidence-aware patient monitoring platforms at moderate cost.
+  - **Team & Institution:** Department of Biomedical Engineering / Computer Science, Coimbatore, Tamil Nadu, India.
+- **Visual Suggestion:** High-impact hero graphic displaying the retrofitted hospital bed layout with 5 sensor callout badges.
 
 ---
 
-### 📍 Slide 3: Limitations of Contact-Based Monitoring
-- **Title:** Why Traditional Contact-Based Sensors Fail in Routine Wards
-- **Core Message:** Electrodes, pulse oximeter clips, and wires cause operational friction in non-ICU environments.
-- **Key Points:**
-  - **Sensor Displacement:** Leads disconnect frequently during patient movement or sleep.
-  - **Skin Trauma & Discomfort:** Prolonged adhesive electrodes cause skin irritation in elderly/pediatric patients.
-  - **Hygiene & Maintenance Burden:** Cables require constant sanitisation and replacement.
-  - **Patient Resistance:** Conscious patients frequently detach wired sensors voluntarily.
-- **Visual Suggestion:** Comparison icons illustrating tangled wires, skin irritation, and frequent sensor dislodgement.
+### 📍 Slide 2: The Monitoring Gap in Indian Hospital Wards
+- **Slide Title:** The Monitoring Gap in Indian Hospital Wards
+- **Purpose:** Clinical problem: monitoring burden, staff workload, missed/limited continuous observations.
+- **Key Content:**
+  - High nurse-to-patient ratios (15 to 40 patients per nurse in general & government wards).
+  - Intermittent vital signs checking (every 4 to 8 hours) leaves long unmonitored windows where deterioration can occur unnoticed.
+  - Heavy documentation workload reduces time for direct patient care.
+- **Visual Suggestion:** Split illustration: High nurse workload vs. timeline showing critical unmonitored gaps between manual rounds.
 
 ---
 
-### 📍 Slide 4: State of Contactless Monitoring & Clinical Evidence
-- **Title:** Contactless Monitoring Works — Clinical Proof (2025–2026)
-- **Core Message:** Recent peer-reviewed studies confirm contactless vitals (radar, camera, BCG) are accurate under controlled conditions.
-- **Key Points:**
-  - **Padaki et al. (Jan 2026, 111 ED Patients):** Camera rPPG achieved HR RMSE 1.62 bpm, RR RMSE 1.71 bpm in real hospital settings.
-  - **Shaya, Levy et al. (Jun 2026, 315 ED Patients):** TAMAR 24 GHz radar validated in emergency departments (RR LOA ±1.6 bpm).
-  - **Pitafi et al. (Feb 2026):** Geophone BCG under mattress achieved MAE < 2 bpm on Raspberry Pi hardware.
-- **Visual Suggestion:** Summary cards featuring citations of R4, R5, and R8 with correlation graphs.
+### 📍 Slide 3: Why Contact-Based Monitoring Has Limits
+- **Slide Title:** Why Contact-Based Monitoring Has Limits
+- **Purpose:** Wires, attachment, displacement, discomfort, maintenance and fragmented monitoring.
+- **Key Content:**
+  - **Attachment Friction:** Electrodes and pulse oximeter clips disconnect frequently during sleep or patient movement.
+  - **Discomfort & Skin Trauma:** Adhesive pads cause skin irritation in pediatric and geriatric patients.
+  - **Maintenance Burden:** Continuous cable sanitisation and replacement overhead.
+  - **Fragmented Data:** Disconnected monitors result in missing or incomplete trend records.
+- **Visual Suggestion:** Comparison icons showing sensor dislodgement, wire clutter, skin irritation, and data loss.
 
 ---
 
-### 📍 Slide 5: The "Silent Failure" Problem in Single-Sensor Systems
-- **Title:** The Unseen Danger: Silent Measurement Corruption
-- **Core Message:** Single-sensor contactless devices fail up to 30% of the time under real ward conditions without notifying staff.
-- **Key Points:**
-  - **Movement Artifacts:** Patient motion causes radar/camera to output corrupted numbers instead of pausing.
-  - **Multiple Occupants:** Visitors sitting on the bed corrupt radar phase signals without detection.
-  - **Blanket Obstruction:** Blankets completely block thermal IR radiation while sensors silently report ambient temp.
-  - **Our Solution:** Multimodal fusion to explicitly detect interference and state measurement confidence.
-- **Visual Suggestion:** Flowchart showing a single-sensor false output vs. a confidence-gated suppressed output.
+### 📍 Slide 4: Contactless Systems Already Work — in Labs and Hospitals
+- **Slide Title:** Contactless Systems Already Work — in Labs and Hospitals
+- **Purpose:** Establish evidence that contactless monitoring is technically feasible using recent research.
+- **Key Content:**
+  - **Padaki et al. (Jan 2026, 111 ED Patients):** Camera rPPG validated in emergency departments (HR RMSE 1.62 bpm, RR RMSE 1.71 bpm).
+  - **Shaya, Levy et al. (Jun 2026, 315 ED Patients):** TAMAR 24 GHz Doppler radar validated across 3 emergency departments.
+  - **Pitafi et al. (Feb 2026):** Geophone BCG under mattress achieved MAE < 2 bpm on Raspberry Pi edge hardware.
+- **Visual Suggestion:** Summary evidence cards citing R4, R5, and R8 with clinical accuracy metrics.
 
 ---
 
-### 📍 Slide 6: Proposed Solution — Hospital Bed as a Sensing Platform
-- **Title:** Retrofitting Standard Cots into Unobtrusive Sensing Platforms
-- **Core Message:** Avoid buying expensive smart beds — integrate low-cost, robust sensors into existing hospital bed frames.
-- **Key Points:**
-  - Zero direct body contact — sensors integrated into bed frame, mattress, and headboard.
-  - Zero modification to routine clinical workflows.
-  - Moderate-cost, high-reliability design philosophy.
-- **Visual Suggestion:** 3D diagram of a standard metal cot highlighting retrofitted sensor mount zones.
+### 📍 Slide 5: Why Existing Contactless Systems Are Not the Answer
+- **Slide Title:** Why Existing Contactless Systems Are Not the Answer
+- **Purpose:** Cost, infrastructure requirements, limited integration and limitations of single-modality systems.
+- **Key Content:**
+  - **Exorbitant Cost:** Commercial smart beds (Stryker, Invacare) cost ₹10–50 lakh per unit — unviable for general wards.
+  - **Rigid Infrastructure:** Requires replacing entire hospital bed inventory rather than retrofitting.
+  - **Single-Modality Fragility:** Single-sensor systems (camera-only or radar-only) fail under movement, blankets, or visitor presence.
+- **Visual Suggestion:** High cost indicator graphic vs. single-sensor vulnerability examples.
 
 ---
 
-### 📍 Slide 7: Five-Sensor Architecture & 3 Physiological Pathways
-- **Title:** Multimodal Sensing Array & Triple-Pathway Cross-Validation
-- **Core Message:** Five complementary sensors create 3 independent measurement paths for vital signs.
-- **Key Points:**
-  - 📡 **mmWave Radar (60 GHz FMCW, HLK-LD6002):** Headboard mounted; measures chest wall displacement (Air path).
-  - 🔊 **Geophone (SM-24):** Under mattress; measures structural BCG micro-vibrations (Structure path).
-  - 🟩 **Pressure Matrix (Velostat 12×12):** Torso area; spatial posture centroid & contact micro-vibration (Contact path).
-  - ⚖️ **Load Cells (4× 50 kg):** Bed leg footpads; weight, occupancy, visitor detection & bed-exit.
-  - 🌡️ **Thermal Dual-Sensing:** Overhead MLX90640 spatial heatmap + MLX90614 point IR (±0.2°C forehead temp).
-- **Visual Suggestion:** Sensor architecture table mapping each sensor to its physical placement and primary signal path.
+### 📍 Slide 6: The Silent Failure Problem
+- **Slide Title:** The Silent Failure Problem
+- **Purpose:** Explain how a sensor can produce unreliable data without clearly indicating that the measurement is unreliable.
+- **Key Content:**
+  - **The Risk:** When patient movement, blankets, or visitors corrupt radar or thermal signals, single-sensor systems output erroneous numbers *without warning*.
+  - Silent measurement failure is clinically more dangerous than acknowledging measurement unavailability.
+  - **R5 Evidence:** TAMAR 315-patient trial proved radar failed to produce valid measurements in 30% of cases due to interference.
+- **Visual Suggestion:** Flowchart showing a corrupt signal yielding a misleading false output vs. an intelligent confidence gate suppressing it.
 
 ---
 
-### 📍 Slide 8: Confidence-Aware Multimodal Fusion Engine
-- **Title:** Intelligent Validity Gating & Interference Detection
-- **Core Message:** The AI fusion engine decides *if* a measurement can be trusted before publishing it.
-- **Key Points:**
-  - **Motion Gate:** Suppresses radar/geophone vitals when pressure matrix detects temporal movement.
-  - **Visitor Gate:** Load cell weight delta (>30 kg) + secondary pressure centroid pauses physiological readings.
-  - **Blanket Detector:** Thermal contrast drop suppresses surface temp reading with a clear warning flag.
+### 📍 Slide 7: Our Approach: The Hospital Bed as a Sensing Platform
+- **Slide Title:** Our Approach: The Hospital Bed as a Sensing Platform
+- **Purpose:** Retrofit existing beds/cots rather than replacing them; unobtrusive sensing architecture.
+- **Key Content:**
+  - **Retrofit Philosophy:** Integrates sensor hardware directly onto existing single-person hospital metal cots (₹0 to ₹5,000 cot cost).
+  - **Zero Body Contact:** Unobtrusive sensors placed at headboard, under mattress, on bed surface, and at bed leg footpads.
+  - **Zero Workflow Friction:** Nurses operate normally without attaching or managing patient leads.
+- **Visual Suggestion:** Annotated 3D schematic of retrofitted cot highlighting headboard, under-mattress, surface, and footpad sensor placements.
+
+---
+
+### 📍 Slide 8: Five Sensors — Three Independent Measurement Pathways
+- **Slide Title:** Five Sensors — Three Independent Measurement Pathways
+- **Purpose:** Explain the sensing strategy and why independent/complementary pathways improve reliability.
+- **Key Content:**
+  - 📡 **mmWave Radar (60 GHz FMCW, HLK-LD6002):** Through-air chest wall displacement (Pathway 1).
+  - 🔊 **Geophone (SM-24):** Under-mattress structural BCG velocity micro-vibration (Pathway 2).
+  - 🟩 **Pressure Matrix (Velostat 12×12):** Surface posture centroid & contact micro-vibration (Pathway 3).
+  - ⚖️ **Load Cells (4× 50 kg):** Bed leg footpads for weight, occupancy, visitor detection (>30 kg delta), and bed exit (<3 s).
+  - 🌡️ **Thermal Dual-Sensing:** Overhead MLX90640 spatial heatmap + Headboard MLX90614 point IR (±0.2°C).
+- **Visual Suggestion:** Architecture diagram mapping 5 physical sensors into 3 independent HR/RR pathways and 2 validation channels.
+
+---
+
+### 📍 Slide 9: The Confidence-Aware Fusion Engine
+- **Slide Title:** The Confidence-Aware Fusion Engine
+- **Purpose:** Core research concept: determine *whether a measurement can be trusted* before using it.
+- **Key Content:**
+  - **Motion Gate:** Pressure matrix & load cell temporal variance detects patient movement → pauses physiological extraction.
+  - **Visitor Gate:** Load cell weight delta (>30 kg) + secondary pressure centroid → flags second occupant & suppresses vitals.
+  - **Blanket Detector:** Thermal contrast drop flags obscured skin → suppresses temperature with explicit warning.
   - **3-Way Pathway Agreement:** High confidence assigned when radar RR and geophone RR agree within ±2 bpm.
-- **Visual Suggestion:** Logic decision-tree diagram showing input signals leading to High Confidence, Low Confidence, or Suppressed states.
+- **Visual Suggestion:** Logic decision-tree state machine showing inputs branching into High Confidence, Low Confidence, or Suppressed states.
 
 ---
 
-### 9: Multi-Patient Simulation & Explainable AI (XAI)
-- **Title:** Phase 2: Software Ward Simulation & SHAP Explainability
-- **Core Message:** Single-bed hardware data powers a software-simulated multi-patient ward prioritisation system.
-- **Key Points:**
-  - **Scenario Data Collection:** Record labelled single-bed scenarios (`quiet_rest`, `restless`, `elevated_rr`, `sustained_pressure`).
-  - **Ward Snapshot Synthesizer:** Composes virtual 4-to-8 bed wards to train an XGBoost priority ranking classifier.
-  - **SHAP Explainability Layer:** Provides natural-language reasons for every priority decision:
-    > *"Patient Bed 3 ranked HIGH: Elevated RR (+35% above baseline, High Conf) contributed +0.42; Sustained Pressure (>2.2h) contributed +0.31."*
-  - **Cost Impact:** ₹0 extra — pure software Phase 2 running on Raspberry Pi 5 or laptop.
-- **Visual Suggestion:** Diagram mapping Phase 1 hardware data → Synthetic Ward Simulation → XGBoost Model → SHAP Output string.
+### 📍 Slide 10: From One Bed to a Ward
+- **Slide Title:** From One Bed to a Ward
+- **Purpose:** How the architecture can eventually scale to multiple beds, patient prioritisation and ward-level monitoring.
+- **Key Content:**
+  - **Phase 1 Physical Prototype:** Single-bed hardware collects real scenario recordings (`quiet_rest`, `elevated_rr`, `sustained_pressure`, etc.).
+  - **Phase 2 Ward Simulation:** Synthetically composes single-bed recordings into 4-to-8 bed virtual ward snapshots.
+  - **AI Ward Prioritisation & XAI:** Trains an XGBoost classifier paired with SHAP (SHapley Additive exPlanations) to rank patient priority:
+    > *"Bed 3 ranked HIGH: Elevated RR (+35% vs baseline) contributed +0.42; Sustained Sacral Pressure (>2.2h) contributed +0.31."*
+  - **Cost:** ₹0 additional hardware cost for Phase 2 software expansion.
+- **Visual Suggestion:** Architecture diagram showing Single-Bed Hardware → Scenario Logger → Virtual Ward Synthesizer → SHAP Priority Output.
 
 ---
 
-### 📍 Slide 10: Clinical Dashboard & Actionable Nurse Alerts
-- **Title:** Intuitive Nurse Interface: Observations, Not Overclaims
-- **Core Message:** A simple, high-visibility web dashboard designed for fast nursing interpretation.
-- **Key Points:**
-  - **Single-Bed View:** Real-time occupancy status, posture map, RR with confidence indicator, temperature trend.
+### 📍 Slide 11: What the Dashboard Tells Nurses
+- **Slide Title:** What the Dashboard Tells Nurses
+- **Purpose:** Show practical output: occupancy, RR, confidence, position, movement and alerts — without diagnostic claims.
+- **Key Content:**
+  - **Single-Bed View:** Real-time occupancy status, posture classification map, RR with live confidence flag, surface temp trend.
   - **Ward Priority View (Phase 2):** Ranked patient queue with SHAP explainability tooltips.
-  - **Actionable Alerts:** "Patient stationary 3 hours — check pressure risk" (no diagnostic overclaims).
-- **Visual Suggestion:** Clean UI wireframe mockups of the Single-Bed view and Ward Priority queue.
+  - **Actionable Observation Alerts:** "Patient stationary 3 hours — check pressure risk" (observational, non-diagnostic).
+- **Visual Suggestion:** Clean UI wireframe mockups of the Single-Bed view and Ward Priority queue interface.
 
 ---
 
-### 11: Scientific Evidence Base (2025–2026 Literature)
-- **Title:** Grounded in Recent Peer-Reviewed Research
-- **Core Message:** Every sensor selection and architectural decision is directly justified by recent literature.
-- **Key Points:**
+### 📍 Slide 12: Evidence Base: Recent Research (2025–2026)
+- **Slide Title:** Evidence Base: Recent Research (2025–2026)
+- **Purpose:** Present the key papers supporting the sensing technologies, multimodal monitoring and clinical direction.
+- **Key Content:**
   - **R1 (Lee et al., Aug 2025):** Bed load cell fusion achieves 96.26% fall/exit detection accuracy.
-  - **R3 (Chen et al., 2024):** 60 GHz mmWave FMCW radar validated for chest displacement extraction.
+  - **R2 (López-Ruiz et al., Sep 2025):** Mattress micro-vibrations carry reliable cardiac & respiratory signals.
   - **R5 (Shaya et al., Jun 2026):** 315-patient ED trial proves single-sensor radar needs multimodal validity gating.
   - **R7 (Reyes et al., 2026):** SiViS dataset highlights multi-patient radar challenges, justifying our simulation approach.
   - **R8 (Pitafi et al., Feb 2026):** Confirms Raspberry Pi 5 capability for geophone BCG signal extraction (MAE < 2 bpm).
-- **Visual Suggestion:** A structured matrix linking each sensor component to its supporting 2025–2026 paper citation.
+- **Visual Suggestion:** Structured matrix linking each sensor component to its supporting 2025–2026 paper citation.
 
 ---
 
-### 📍 Slide 12: Prototype Budget & Economic Viability
-- **Title:** Comprehensive ₹64,280 Prototype Budget Breakdown
-- **Core Message:** Delivering a 5-sensor AI-fused prototype at a fraction of commercial smart bed costs.
-- **Key Points:**
+### 📍 Slide 13: Budget: ₹64,280 for the Full Prototype
+- **Slide Title:** Budget: ₹64,280 for the Full Prototype
+- **Purpose:** Show realistic prototype expenditure and explain how the remaining funding can support further research.
+- **Key Content:**
   - **Processing Platform (40.7%):** Raspberry Pi 5 8 GB (₹20,000), active cooler, 64 GB microSD A2, PSU, case.
   - **Sensors & Electronics (25.1%):** Radar, geophone, Velostat sheets, load cells, thermal camera, ESP32, ADCs, muxes.
-  - **Fabrication & Calibration (26.7%):** Bed cot frame, foam mattress, MS mounts, camera arm, enclosures, test weights.
-  - **Contingency & Reserve (7.4%):** ₹4,555 buffer; institutional access for reference scale/spirometer/oximeter saves ₹2,800.
-  - **Economic Comparison:** ₹64,280 prototype vs. ₹10,000,00+ commercial smart beds (93%+ cost reduction).
+  - **Fabrication & Validation (34.2%):** Bed frame, foam mattress, MS mounts, enclosures, test weights, honoraria, ethics docs.
+  - **Total Budget:** ₹64,280 (worst case) / ₹61,480 (best case with institutional access).
+  - **Surplus Strategy:** Remaining ₹35,720 retained for Phase 2 clinical-site testing at an affiliated hospital.
 - **Visual Suggestion:** Embedded Mermaid Donut Chart showing category percentages + key stat cards.
 
 ---
 
-### 📍 Slide 13: Core Research Novelty & Defensible Research Gap
-- **Title:** Academic Contribution: What Makes This Research Novel
-- **Core Message:** Filling a documented gap in affordable, interference-explicit healthcare sensing.
-- **Key Points:**
-  - **Triple-Pathway BCG Fusion:** Combining radar, geophone, and pressure matrix BCG in a single bed platform.
-  - **Explicit Interference Awareness:** Systematically modeling *when* measurements are invalid (movement/visitor/blanket).
-  - **Low-Cost Bed Retrofit:** Accessible architecture designed specifically for resource-constrained general wards.
-  - **Simulated Ward XAI:** Combining single-bed physical data with synthetic ward composition and SHAP explainability.
-- **Visual Suggestion:** A 4-quadrant feature comparison matrix highlighting our system vs. existing research papers.
+### 📍 Slide 14: Research Novelty & Proposed Contribution
+- **Slide Title:** Research Novelty & Proposed Contribution
+- **Purpose:** Clearly state the research gap and what your project contributes: multimodal pathways + confidence-aware fusion + affordable retrofit architecture.
+- **Key Content:**
+  - **Defensible Research Gap:** No prior study demonstrates an integrated <USD 750 system combining 3 independent physiological pathways (radar, geophone, pressure BCG) with explicit interference detection.
+  - **Core Contributions:**
+    1. Triple-pathway cross-validated physiological sensing.
+    2. Confidence-aware validity gating for real-world ward conditions.
+    3. Affordable bed-retrofit architecture for resource-constrained hospitals.
+    4. Simulation-grounded XAI ward prioritisation using real single-bed recordings.
+- **Visual Suggestion:** 4-quadrant contribution matrix comparing our system against current literature.
 
 ---
 
-### 📍 Slide 14: Summary Impact & Technical Roadmap
-- **Title:** Execution Roadmap & Expected Outcomes
-- **Core Message:** Structured 18-week execution plan delivering a validated physical prototype and software ward simulation.
-- **Key Points:**
-  - **Weeks 1–4 (Phase 1 Build):** Hardware integration, load cell tare calibration, pressure grid scan characterisation.
-  - **Weeks 5–8 (Phase 2 Fusion):** Motion gate, visitor detection (>90% accuracy target), and 3-way RR agreement logic.
-  - **Weeks 9–14 (Phase 3 Trials):** 10 volunteer testing sessions (IRB ethics cleared) collecting scenario dataset.
-  - **Weeks 15–18 (Phase 4 Simulation & Paper):** SHAP multi-patient model training, reference comparison, conference paper draft.
-- **Visual Suggestion:** Clean 4-phase horizontal timeline chart with milestone badges.
-
----
-
-### 📍 Slide 15: Thank You & Q&A
-- **Title:** Thank You
-- **Subtitle:** Questions & Discussion
-- **Key Points:**
-  - Project Title & Team Contact Email / Department Address
-  - GitHub Project Repository Link
-  - Summary Highlight: *"Affordable, Unobtrusive, Confidence-Aware Patient Monitoring for Resource-Constrained Healthcare."*
-- **Visual Suggestion:** Minimalist closing slide with team contact details, repository QR code, and core project motto.
+### 📍 Slide 15: Thank You
+- **Slide Title:** Thank You
+- **Purpose:** Final project statement/contact/team information.
+- **Key Content:**
+  - Project Title & Team Contact Email / Department Address.
+  - GitHub Project Repository Link.
+  - **Final Project Statement:** *"Affordable, Unobtrusive, Confidence-Aware Patient Monitoring for Resource-Constrained Healthcare."*
+- **Visual Suggestion:** Minimalist closing slide with team contact details, repository QR code, and final project motto.
 
 ---
 

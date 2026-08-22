@@ -553,21 +553,21 @@ Collect labelled scenario recordings (see §7 scenario labels). These recordings
 
 | # | Slide Title | Purpose |
 |---|---|---|
-| 1 | The Monitoring Gap in Indian Hospital Wards | Clinical problem: nurse ratios, missed vital signs, existing equipment burden |
-| 2 | Why Contact-Based Monitoring Has Limits | Wires, displacement, patient discomfort, infection risk |
-| 3 | Contactless Systems Already Work — in Labs and EDs | R4 (111 patients), R5 (315 patients): prove the technology works |
-| 4 | Why Existing Contactless Systems Are Not the Answer | Cost (₹10–50 lakh), installation, and the 30% silent failure problem (R5) |
-| 5 | The Silent Failure Problem | What happens when a single sensor fails without saying so — and why it is dangerous |
-| 6 | Our Approach: The Hospital Bed as a Sensing Platform | Retrofit concept: no new bed; five sensors integrated into any existing cot |
-| 7 | Five Sensors — Three Independent Measurement Pathways | Radar (through-air) + geophone (through-structure) + pressure-BCG: why three paths matters |
-| 8 | The Confidence-Aware Fusion Engine | Core novelty: "Can we trust this measurement?" — visitor/blanket/movement scenarios |
-| 9 | Phase 2: From One Bed to a Ward | Simulation-based multi-patient AI prioritisation using real prototype data + SHAP explainability |
-| 10 | What the Dashboard Tells Nurses | Show dashboard mockup: occupancy, RR + confidence flag, position, alerts — no diagnostic claims |
-| 11 | Evidence Base: 8 Papers (2025–2026) | R1–R8 support every sensor and design decision |
-| 12 | Budget: ₹64,280 for the Full Prototype | Five sensors, AI edge computing, validation. ₹35,720 surplus for Phase 2. |
-| 13 | Research Novelty | The research gap statement. What is new: three pathways + confidence-aware + simulation XAI at this cost |
-| 14 | Validation Plan | 4-phase plan. Bland-Altman analysis. IRB ethics. 10 volunteer sessions. |
-| 15 | Funding Ask | ₹1,00,000. Phase 1 deliverable: validated prototype + published proof-of-concept data. Phase 2: clinical-site. |
+| 1 | **Project Title** | Project name, one-line vision, team/institution |
+| 2 | **The Monitoring Gap in Indian Hospital Wards** | Clinical problem: monitoring burden, staff workload, missed/limited continuous observations |
+| 3 | **Why Contact-Based Monitoring Has Limits** | Wires, attachment, displacement, discomfort, maintenance and fragmented monitoring |
+| 4 | **Contactless Systems Already Work — in Labs and Hospitals** | Establish evidence that contactless monitoring is technically feasible using recent research |
+| 5 | **Why Existing Contactless Systems Are Not the Answer** | Cost, infrastructure requirements, limited integration and limitations of single-modality systems |
+| 6 | **The Silent Failure Problem** | Explain how a sensor can produce unreliable data without clearly indicating that the measurement is unreliable |
+| 7 | **Our Approach: The Hospital Bed as a Sensing Platform** | Retrofit existing beds/cots rather than replacing them; unobtrusive sensing architecture |
+| 8 | **Five Sensors — Three Independent Measurement Pathways** | Explain the sensing strategy and why independent/complementary pathways improve reliability |
+| 9 | **The Confidence-Aware Fusion Engine** | Core research concept: determine *whether a measurement can be trusted* before using it |
+| 10 | **From One Bed to a Ward** | How the architecture can eventually scale to multiple beds, patient prioritisation and ward-level monitoring |
+| 11 | **What the Dashboard Tells Nurses** | Show practical output: occupancy, RR, confidence, position, movement and alerts — without diagnostic claims |
+| 12 | **Evidence Base: Recent Research (2025–2026)** | Present the key papers supporting the sensing technologies, multimodal monitoring and clinical direction |
+| 13 | **Budget: ₹64,280 for the Full Prototype** | Show realistic prototype expenditure and explain how the remaining funding can support further research |
+| 14 | **Research Novelty & Proposed Contribution** | Clearly state the research gap and what your project contributes: multimodal pathways + confidence-aware fusion + affordable retrofit architecture |
+| 15 | **Thank You** | Final project statement/contact/team information |
 
 ---
 
