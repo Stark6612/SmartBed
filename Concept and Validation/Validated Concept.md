@@ -1,263 +1,261 @@
-# Validated Concept — AI-Powered Multimodal Contactless Patient Monitoring System
-## Project System Specification & Architecture Document
+# Validated Concept
+## AI-Powered Multimodal Contactless Patient Monitoring System — Smart Bed V2
 
-**Project Title:** AI-Powered Multimodal Contactless Patient Monitoring and Clinical Decision Support System Using the Hospital Bed as an Unobtrusive Sensing Platform  
-**Target Deployment Context:** Resource-constrained hospital wards, government hospitals, and general wards in India  
-**Platform Concept:** Retrofit existing single-person hospital beds with an integrated five-sensor array  
-**Budget Ceiling:** ₹1,00,000 | **Verified Prototype Cost:** ₹64,280 (Option B)  
-**Location:** Coimbatore, Tamil Nadu, India | **Date:** August 2026  
+**Project Vision:** Transform conventional hospital cots into intelligent, confidence-aware patient monitoring platforms at moderate cost — no new bed required.  
+**Location:** Coimbatore, Tamil Nadu, India | **Budget:** ₹64,280 | **Phase 1 Scope:** Single-bed research prototype, lab validation
 
 ---
 
-## 1. Executive Summary & Vision
+## 1. Core Concept
 
-The core mission of this project is to transform conventional, non-smart hospital beds into intelligent sensing platforms without requiring expensive commercial smart beds (which cost ₹10–50 lakh). By retrofitting standard bed frames with a low-cost array of five non-obtrusive sensor modalities and an edge computing node, the system continuously observes patient status without attaching wires or patches directly to the patient's skin.
+We retrofit existing single-person hospital metal cots with five non-contact sensors. No leads attach to the patient. The bed itself observes — heartbeat vibration through the mattress, chest displacement through the air, weight at the legs, posture through the mattress surface, and body heat from above.
 
-### Key Innovations
-
-1. **Three Independent HR/RR Pathways:** Combines mmWave radar (through-air), geophone (through-structure BCG), and pressure matrix micro-vibrations to cross-validate physiological signals.
-2. **Confidence-Aware Sensor Fusion:** Explicitly detects and flags real-world interference (patient movement, visitors sitting on the bed, blanket coverage) that causes single-sensor systems to fail silently.
-3. **Two-Phase Research Architecture:**
-   - **Phase 1 (Hardware Prototype):** Single-bed physical prototype collecting validated patient data.
-   - **Phase 2 (Software Ward Simulation & XAI):** Replays scenario recordings to simulate multi-patient ward dynamics, training a Machine Learning classifier paired with SHAP (SHapley Additive exPlanations) to provide explainable patient prioritisation.
+The key research question is not just *"what is the patient's RR?"* but **"can we trust this reading right now?"** That confidence-awareness is the system's primary scientific contribution.
 
 ---
 
-## 2. Core Capabilities & Scope
+## 2. Five Sensors & Three Independent Physiological Pathways
 
-### In-Scope Deliverables (Phase 1 Prototype)
-
-| Capability | Sensing Modality | Technical Mechanism |
-|---|---|---|
-| **Bed Occupancy Detection** | Load Cells + Pressure Matrix | Binary state derived from total weight delta and spatial pressure centroid |
-| **Visitor / Second Occupant Detection** | Load Cells + Pressure Matrix | Weight delta (>30 kg) + secondary pressure centroid detection |
-| **Bed-Exit Alert** | Load Cells | Immediate weight drop to near-zero tare baseline (<3 s latency) |
-| **Body Position Classification** | Pressure Matrix | 4-class centroid mapping: Supine, Left Lateral, Right Lateral, Seated |
-| **Body Movement Level** | Pressure Matrix + Load Cells | Temporal variance in pressure grid intensity and total load jitter |
-| **Respiratory Rate (RR)** | mmWave Radar + Geophone | FFT phase extraction (radar) & bandpass filtering (geophone); validated against manual count |
-| **Exploratory Heart Rate (HR)** | Geophone + mmWave Radar | Structural BCG vibration peak extraction (geophone) cross-checked with radar micro-motion |
-| **Surface Temperature Trend** | Point IR + Thermal Array | High-accuracy forehead/chest reading (MLX90614, ±0.2°C) + spatial thermal mapping (MLX90640) |
-| **Measurement Confidence Gate** | Multi-Sensor Fusion Engine | Deterministic state machine assigning per-reading validity confidence (High / Low / Suppressed) |
-
-### Explicitly Out-Of-Scope for Phase 1
-
-- **No Clinical Diagnosis Claims:** System provides observational alerts, not medical diagnoses.
-- **No Direct Contactless BP or SpO₂ Claims:** Pulse oximeter (V4) is used strictly as a reference validation tool for volunteer sessions.
-- **No Real-Time Ward Deployment:** Phase 1 is restricted to controlled laboratory and volunteer trial validation.
-
----
-
-## 3. Hardware Architecture & Sensor Placement
+### Sensor Placement
 
 ```
-                        ┌──────────────────────────────────────────┐
-                        │      OVERHEAD ARM (Height: 1.2 m)        │
-                        │  • MLX90640 Spatial Thermal Array (I2C)  │
-                        └────────────────────┬─────────────────────┘
-                                             │
- ┌───────────────────────────────────┐       │       ┌───────────────────────────────────┐
- │   HEADBOARD MOUNT (Height: 0.6 m) │       │       │       MATTRESS & BED FRAME        │
- │ • HLK-LD6002 60GHz Radar (UART)   │       │       │ • Velostat Pressure Matrix (Top)  │
- │ • MLX90614 Point Temp Sensor (I2C)│       │       │ • SM-24 Geophone (Under Mattress) │
- └─────────────────┬─────────────────┘       │       └─────────────────┬─────────────────┘
-                   │                         │                         │
-                   └─────────────────────────┼─────────────────────────┘
-                                             ▼
-                             ┌──────────────────────────────┐
-                             │  ELECTRONICS ENCLOSURE BOX   │
-                             │  • ESP32 MCU (ADC/Mux Scan)  │
-                             │  • HX711, ADS1115, Buck Conv │
-                             └───────────────┬──────────────┘
-                                             │ MQTT / Serial
-                                             ▼
-                             ┌──────────────────────────────┐
-                             │  RASPBERRY PI 5 (8 GB) NODE  │
-                             │  • Signal Processing (SciPy) │
-                             │  • Fusion State Machine      │
-                             │  • FastAPI / SQLite Backend  │
-                             └──────────────────────────────┘
-                                             ▲
-                                             │ Load Cell Signals
-                             ┌───────────────┴──────────────┐
-                             │ BED LEG FOOTPADS (4 Corner)  │
-                             │ • 4× 50 kg Half-Bridge Cells │
-                             └──────────────────────────────┘
+              ┌─────────────────────────────┐
+              │   OVERHEAD ARM (1.2 m high) │
+              │   MLX90640 Thermal Array    │ ← Spatial heat map, body outline, blanket detection
+              └────────────┬────────────────┘
+                           │ I2C
+ ┌─────────────────────────┤─────────────────────────────────────┐
+ │  HEADBOARD (0.6 m high) │                                     │
+ │  HLK-LD6002 60GHz Radar ├── UART ──► RPi 5                   │
+ │  MLX90614 Point IR Temp ├── I2C  ──► RPi 5                   │
+ └─────────────────────────┤                                     │
+                           │         ┌───────────────────────────┤
+                           │         │   MATTRESS SURFACE (top)  │
+                           │         │   Velostat Pressure Matrix │ ← Posture, movement, BCG
+                           │         └──────────────┬────────────┘
+                           │                        │ Analog → ADS1115 → ESP32
+                           │         ┌──────────────┴────────────┐
+                           │         │ UNDER MATTRESS            │
+                           │         │ SM-24 Geophone            │ ← Structural BCG: HR + RR
+                           │         └──────────────┬────────────┘
+                           │                        │ Analog → ADS1115 → ESP32
+                           └─────────────────────────────────────┘
+
+ ┌─────────────────────────────────────────────────────────────────┐
+ │  BED LEG FOOTPADS (all 4 legs)                                  │
+ │  4× 50 kg half-bridge load cells  → HX711 ×2 → ESP32          │ ← Weight, occupancy, visitor, exit
+ └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Sensor Placement & Specification Matrix
+### Three Independent HR/RR Pathways
 
-| Sensor | Model / Specification | Physical Placement | Interface | Purpose |
+```mermaid
+graph LR
+    A["📡 mmWave Radar<br/>HLK-LD6002 60GHz<br/>Headboard Mount"]:::sensor -->|Chest wall<br/>displacement| P1["Pathway 1<br/>Through-Air"]
+    B["🔊 Geophone<br/>SM-24<br/>Under Mattress"]:::sensor -->|Structural BCG<br/>vibration| P2["Pathway 2<br/>Through-Structure"]
+    C["🟩 Pressure Matrix<br/>Velostat 12×12<br/>Mattress Surface"]:::sensor -->|Contact micro-<br/>vibration & centroid| P3["Pathway 3<br/>Through-Contact"]
+    D["⚖️ Load Cells 4×<br/>Bed Leg Footpads"]:::sensor --> V1["Validation<br/>Occupancy / Weight<br/>Visitor / Bed-Exit"]
+    E["🌡️ Thermal Dual<br/>MLX90640 + MLX90614<br/>Overhead + Headboard"]:::sensor --> V2["Validation<br/>Surface Temp Trend<br/>Blanket Detection"]
+    P1 & P2 & P3 --> F["🔀 Confidence-Aware<br/>Fusion Engine"]
+    V1 & V2 --> F
+    classDef sensor fill:#1e3a5f,color:#fff,stroke:#2e75b6
+```
+
+| Sensor | Placement | Measures | Blanket-proof? | ₹ Cost |
 |---|---|---|---|---|
-| **mmWave Radar** | HLK-LD6002 (60 GHz FMCW, vital sign radar) | Headboard mounted at 0.6 m height, directed at patient thorax (0.5–0.9 m distance) | UART (to Pi serial) | Non-contact chest wall displacement for Respiratory Rate (RR) |
-| **Geophone** | SM-24 (Low-frequency seismic velocity sensor, ~28 Hz) | Placed under mattress, directly on bed frame beneath upper torso | Analog ADC (ADS1115 / Pi) | Structural Ballistocardiography (BCG): detects mechanical heart recoil & breathing micro-vibration |
-| **Pressure Matrix** | 4× Velostat piezoresistive sheets (12×12 conductive tape grid, ~60×60 cm) | Placed directly on top of mattress under thin bed sheet (covering torso & hips) | Multiplexed Analog (CD74HC4067 → ADS1115 → ESP32) | Spatial pressure distribution, body centroid, position classification, movement tracking |
-| **Load Cells** | 4× 50 kg half-bridge aluminium load cells | Sandwiched in custom aluminium footpads under all 4 bed legs | 2× HX711 24-bit ADCs → ESP32 | Total weight measurement, bed occupancy, visitor detection (weight delta), bed-exit detection |
-| **Spatial Thermal** | MLX90640 IR Array (32×24 pixels, 55° FOV) | Overhead adjustable arm at 1.2 m height facing down on bed surface | I2C (to Raspberry Pi) | Spatial thermal footprint, body outline verification, blanket coverage detection |
-| **Point Temperature** | Melexis MLX90614ESF-BCC (90° FOV, ±0.2°C accuracy) | Headboard mounted, aimed at patient forehead/chest region | I2C (to Raspberry Pi) | High-accuracy clinical-grade skin surface temperature reading |
+| HLK-LD6002 Radar (60 GHz FMCW) | Headboard, 0.6 m, facing thorax | RR (primary), HR (exploratory) | Partially | 2,200 |
+| SM-24 Geophone | Under mattress, beneath upper torso | RR + HR via structural BCG | ✅ Yes | 500 |
+| Velostat Pressure Matrix (12×12) | Mattress surface, torso + hips | Body position, movement, pressure map | ✅ Yes | 3,800 |
+| Load Cells ×4 + HX711 ×2 | All 4 bed leg footpads | Weight, occupancy, visitor (+30 kg), bed-exit | ✅ Yes | 540 |
+| MLX90640 (32×24 px array) | Overhead arm, 1.2 m | Spatial thermal map, body outline, blanket | ❌ No | 5,000 |
+| MLX90614 (±0.2°C point IR) | Headboard, aimed at forehead/chest | Surface temperature trend | ❌ No | 700 |
 
 ---
 
-## 4. Software Architecture & Signal Pipelines
+## 3. Hardware Architecture
 
-### Multi-Node System Software Stack
+```mermaid
+graph TB
+    subgraph SENSORS["Sensor Layer"]
+        R["📡 HLK-LD6002<br/>60 GHz Radar<br/>UART"]
+        G["🔊 SM-24<br/>Geophone<br/>Analog"]
+        PM["🟩 Velostat Matrix<br/>12×12 Grid<br/>Analog"]
+        LC["⚖️ Load Cells ×4<br/>Half-Bridge<br/>Analog"]
+        TH["🌡️ MLX90640<br/>Thermal Array<br/>I2C"]
+        TP["🌡️ MLX90614<br/>Point IR<br/>I2C"]
+    end
 
-```
- ┌─────────────────────────────────────────────────────────────────────────────┐
- │                         ESP32 SENSING NODE (C++)                            │
- │  • HX711 Load Cell Driver  • CD74HC4067 Multiplexer Sequencer (12×12 Grid) │
- │  • ADS1115 ADC Reader     • Wi-Fi MQTT Publisher (JSON Payloads @ 10 Hz)   │
- └──────────────────────────────────────┬──────────────────────────────────────┘
-                                        │ Wi-Fi / MQTT
-                                        ▼
- ┌─────────────────────────────────────────────────────────────────────────────┐
- │                      RASPBERRY PI 5 EDGE & AI NODE                          │
- │                                                                             │
- │  ┌───────────────────────────────────────────────────────────────────────┐  │
- │  │ Data Ingestion: Mosquitto MQTT Broker + Direct UART (Radar) + I2C     │  │
- │  └───────────────────────────────────┬───────────────────────────────────┘  │
- │                                      ▼                                      │
- │  ┌───────────────────────────────────────────────────────────────────────┐  │
- │  │ Signal Processing Pipeline (NumPy / SciPy)                            │  │
- │  │ • Radar FFT & Phase Demodulation (0.1–0.5 Hz Breathing Bandpass)       │  │
- │  │ • Geophone BCG Bandpass (0.8–2.5 Hz Cardiac, 0.1–0.5 Hz Respiratory)   │  │
- │  │ • Pressure Grid Centroid & Spatiotemporal Gradient Computation        │  │
- │  └───────────────────────────────────┬───────────────────────────────────┘  │
- │                                      ▼                                      │
- │  ┌───────────────────────────────────────────────────────────────────────┐  │
- │  │ Confidence-Aware Fusion Engine (State Machine Rule Logic)              │  │
- │  │ • Motion Gate  • Visitor Detector  • Blanket Detector  • 3-Way Check   │  │
- │  └───────────────────────────────────┬───────────────────────────────────┘  │
- │                                      ▼                                      │
- │  ┌───────────────────────────────────────────────────────────────────────┐  │
- │  │ Storage & API Layer: SQLite Database + FastAPI REST & WebSockets     │  │
- │  └───────────────────────────────────┬───────────────────────────────────┘  │
- └──────────────────────────────────────┼──────────────────────────────────────┘
-                                        │ WebSockets / HTTP
-                                        ▼
- ┌─────────────────────────────────────────────────────────────────────────────┐
- │                      NURSE DASHBOARD & WEB UI (HTML/JS)                     │
- │  • Real-Time Single-Bed View (Live Vitals, Pressure Heatmap, Confidence)    │
- │  • Phase 2 Simulated Ward View (Multi-Patient Priority List + SHAP XAI)     │
- └─────────────────────────────────────────────────────────────────────────────┘
-```
+    subgraph MCU["Microcontroller Layer — ESP32"]
+        MUX["CD74HC4067<br/>16-ch Mux ×3<br/>Matrix Scanning"]
+        ADC["ADS1115<br/>16-bit ADC ×2<br/>Geophone + Matrix"]
+        HX["HX711 ×2<br/>24-bit ADC<br/>Load Cells"]
+        LLC["Logic Level<br/>Converter ×2<br/>3.3V↔5V"]
+    end
 
-### Signal Processing Pipelines
+    subgraph EDGE["Edge Computing — Raspberry Pi 5 (8 GB)"]
+        SP["Signal Processing<br/>NumPy / SciPy<br/>FFT + Bandpass"]
+        FM["Fusion Engine<br/>State Machine<br/>Confidence Gating"]
+        DB["SQLite<br/>Data Store<br/>30s flush"]
+        API["FastAPI<br/>WebSocket<br/>Backend"]
+    end
 
-1. **Radar Respiratory Processing:**
-   - Raw I/Q data → Phase unwrapping → Bandpass Butterworth filter ($0.1\text{ Hz} - 0.5\text{ Hz}$) → Peak detection / FFT spectrum peak → Respiratory Rate estimate (bpm).
-2. **Geophone Structural BCG Processing:**
-   - Raw voltage time-series ($100\text{ Hz}$ sampling) → Remove baseline offset → Dual Butterworth filters:
-     - Breathing band ($0.1 - 0.5\text{ Hz}$) → Secondary RR estimate.
-     - Cardiac band ($0.8 - 2.5\text{ Hz}$) → J-peak interval detection → Exploratory HR estimate.
-3. **Pressure Grid Processing:**
-   - 144 cell matrix scan ($10\text{ Hz}$) → Crosstalk suppression mask → Calculate Centroid $(\bar{X}, \bar{Y})$:
-     $$\bar{X} = \frac{\sum (X_i \cdot P_i)}{\sum P_i}, \quad \bar{Y} = \frac{\sum (Y_i \cdot P_i)}{\sum P_i}$$
-   - Classify position via SVM / Random Forest: Supine, Left Lateral, Right Lateral, Seated.
+    subgraph POWER["Power Subsystem"]
+        PS["12V 5A Supply"]
+        BK["LM2596<br/>Buck Conv ×3<br/>5V / 3.3V rails"]
+    end
 
----
-
-## 5. Confidence-Aware Fusion Engine Design
-
-The fusion engine evaluates inputs from all five sensors to determine measurement validity before publishing to the dashboard.
-
-```
-                            ┌─────────────────────────┐
-                            │   RAW SENSOR INPUTS     │
-                            └────────────┬────────────┘
-                                         │
-                                         ▼
-                            ┌─────────────────────────┐
-                            │ LOAD CELL OCCUPANCY?    ├───── NO ──────► [BED UNOCCUPIED]
-                            └────────────┬────────────┘                 Suppress Vitals
-                                         │ YES
-                                         ▼
-                            ┌─────────────────────────┐
-                            │ LOAD CELL WEIGHT DELTA  ├───── >30 kg ──► [VISITOR DETECTED]
-                            │   OR SECOND CENTROID?   │                 Flag & Pause Vitals
-                            └────────────┬────────────┘
-                                         │ NO (Single Patient)
-                                         ▼
-                            ┌─────────────────────────┐
-                            │ PRESSURE GRID MOVEMENT  ├───── >Threshold► [PATIENT MOVING]
-                            │   OR GEOPHONE JITTER?   │                 Pause Radar/Geophone
-                            └────────────┬────────────┘
-                                         │ LOW (Patient Still)
-                                         ▼
-                            ┌─────────────────────────┐
-                            │ THERMAL CONTRAST LOW?   ├───── YES ─────► [BODY OBSCURED]
-                            └────────────┬────────────┘                 Flag Temp Only
-                                         │ NO (Skin Visible)
-                                         ▼
-                            ┌─────────────────────────┐
-                            │ RADAR vs GEOPHONE RR    ├───── Disagree ─► [LOW CONFIDENCE]
-                            │   AGREE WITHIN 2 BPM?   │                 Flag Disagreement
-                            └────────────┬────────────┘
-                                         │ YES (Agreement)
-                                         ▼
-                            ┌─────────────────────────┐
-                            │   HIGH CONFIDENCE RR    │
-                            │   Publish Vitals + Flag │
-                            └─────────────────────────┘
+    R -->|"UART direct"| EDGE
+    G --> ADC
+    PM --> MUX --> ADC
+    LC --> HX
+    TH -->|"I2C direct"| EDGE
+    TP -->|"I2C direct"| EDGE
+    ADC --> MCU
+    HX --> MCU
+    MCU -->|"Wi-Fi MQTT"| EDGE
+    PS --> BK --> MCU
+    SP --> FM --> DB --> API
 ```
 
 ---
 
-## 6. Phase 2: Simulated Multi-Patient Ward & Explainable AI (XAI)
+## 4. Software Architecture & Data Flow Pipeline
 
-### Overview
+```mermaid
+flowchart TD
+    A1["ESP32 MQTT\n10 Hz payloads\nPressure + Load"] --> ING
+    A2["Radar UART\nI/Q stream\nDirect to RPi"] --> ING
+    A3["I2C Poll\nThermal 1 Hz\nMLX90640 + 90614"] --> ING
+    A4["Geophone ADC\n100 Hz sample\nADS1115"] --> ING
 
-While Phase 1 proves hardware capability on a single bed, Phase 2 builds a software ward simulation using scenario recordings collected during Phase 1 volunteer trials.
+    ING["📥 Data Ingestion\nMosquitto MQTT Broker\nSerial + I2C drivers"] --> SP
 
-### Pipeline
+    SP["⚙️ Signal Processing (SciPy)\n• Radar: FFT phase demodulation\n• Geophone: dual bandpass filter\n  0.1–0.5 Hz breath / 0.8–2.5 Hz cardiac\n• Pressure: centroid computation\n  X̄ = Σ(Xᵢ·Pᵢ)/ΣPᵢ"] --> FE
 
-1. **Scenario Dataset (Phase 1 Output):** Labelled 10-minute sensor sessions (`quiet_rest`, `restless`, `elevated_rr`, `temperature_rising`, `sustained_pressure`, `bed_exit_attempt`, `visitor_present`).
-2. **Synthetic Ward Composition:** Composes 4 to 8 virtual bed states into a synthetic ward snapshot.
-3. **Priority Model Training:** Trains an XGBoost / Random Forest classifier on per-patient feature vectors to predict priority rank (Low, Medium, High, Immediate).
-4. **SHAP Explainability Engine:** Calculates Shapley values for every feature per prediction to output natural-language explanations:
-   > *"Patient Bed 3 ranked HIGH PRIORITY because: Elevated Respiratory Rate (+35% vs baseline, High Confidence) contributed +0.42; Sustained Sacral Pressure (>2.2 hours) contributed +0.31; Surface Temperature Trend (+0.7°C) contributed +0.18."*
+    FE["🔀 Confidence-Aware\nFusion Engine\nState Machine Rules"] --> OUT
+
+    OUT["📊 Output Layer\n• RR (+ confidence flag)\n• HR exploratory\n• Body position (4-class)\n• Occupancy / Visitor / Bed-exit\n• Surface temp trend\n• Movement level"] --> STORE
+
+    STORE["💾 SQLite DB\nPer-session logs\n30 s flush to disk"] --> API
+
+    API["🚀 FastAPI Backend\nWebSocket + REST\nJSON payloads"] --> DASH
+
+    DASH["🖥️ Nurse Dashboard\nSingle-Bed Real-Time View\n+\nPhase 2 Ward Priority Queue"]
+```
 
 ---
 
-## 7. System Budget & Procurement Summary
+## 5. Confidence-Aware Fusion Engine
 
-| Category | Major Items included | Verified Cost (₹) |
+This is the core research mechanism. The system decides **whether a reading can be trusted** before reporting it.
+
+```mermaid
+flowchart TD
+    START(["New Sensor Frame"]) --> OCC
+
+    OCC{"Load Cells:\nWeight > tare?"}
+    OCC -- No --> U["🔴 BED UNOCCUPIED\nSuppress all outputs"]
+    OCC -- Yes --> VIS
+
+    VIS{"Load Cell delta\n> 30 kg OR\n2nd pressure centroid?"}
+    VIS -- Yes --> V["🟠 VISITOR DETECTED\nSuppress physiological readings\nAlert if > 5 min"]
+    VIS -- No --> MOV
+
+    MOV{"Pressure matrix\ntemporal variance\n> threshold?"}
+    MOV -- Yes --> M["🟡 PATIENT MOVING\nPause radar + geophone RR\nResume after 30 s still"]
+    MOV -- No ─ Still --> BLK
+
+    BLK{"Thermal contrast\nindex < 0.3?"}
+    BLK -- Yes --> B["🟡 BODY OBSCURED\nSuspend temperature\nRadar + geophone unaffected"]
+    BLK -- No --> AGREE
+
+    AGREE{"Radar RR vs\nGeophone RR\nwithin ± 2 bpm?"}
+    AGREE -- Yes --> HC["🟢 HIGH CONFIDENCE\nPublish: RR, Temp Trend,\nPosition, Movement Level"]
+    AGREE -- No --> LC2["🟡 LOW CONFIDENCE\nPublish with flag:\n'Sensor pathway disagreement'"]
+```
+
+### Confidence Output States
+
+| State | Trigger | Published Data |
+|---|---|---|
+| 🟢 **High Confidence** | Still, single occupant, radar + geophone agree | RR, exploratory HR, surface temp, position |
+| 🟡 **Low Confidence** | Radar/geophone disagree by >2 bpm | RR with explicit flag |
+| 🟠 **Visitor Detected** | Weight delta >30 kg + second centroid | Alert only — no physiological data |
+| 🔴 **Body Obscured** | Thermal contrast drop | Temperature suspended; RR/geophone continue |
+| ⬛ **Bed Unoccupied** | Load cells near tare | All outputs suppressed |
+
+---
+
+## 6. From One Bed to a Ward (Phase 2 — Software Only)
+
+Phase 2 costs ₹0 in additional hardware. It is a pure software research extension using Phase 1 data.
+
+```mermaid
+flowchart LR
+    HW["🛏️ Phase 1\nSingle-Bed Hardware\n(Physical Prototype)"]
+    -->|"Volunteer sessions\nLabelled scenario recordings"| LOG
+
+    LOG["📁 Scenario Dataset\n• quiet_rest\n• elevated_rr\n• temperature_rising\n• sustained_pressure\n• bed_exit_attempt\n• visitor_present\n• restless"]
+    -->|"Compose 4–8 bed\nvirtual ward snapshots"| SIM
+
+    SIM["🏥 Synthetic Ward\nSimulator\n(Software)"]
+    -->|"Per-patient feature\nvector + priority label"| MODEL
+
+    MODEL["🤖 XGBoost / RF\nPriority Classifier\nLow / Medium / High / Immediate"]
+    -->|"SHAP Shapley values\nper feature per patient"| SHAP
+
+    SHAP["💡 SHAP Explainability\nNatural-language reason\nper priority decision"]
+    --> DASH["🖥️ Ward Priority\nDashboard Queue\n+ Explanation Tooltips"]
+```
+
+**Example SHAP Output:**
+> *"Bed 3 ranked HIGH PRIORITY — Elevated RR (+35% vs baseline, High Confidence): +0.42 · Sustained sacral pressure >2.2 h: +0.31 · Surface temp trend +0.7°C: +0.18"*
+
+---
+
+## 7. System Outputs & Clinical Framing
+
+| Output | Classification | Claim Level |
+|---|---|---|
+| Respiratory Rate (radar + geophone) | Primary deliverable | Research prototype — RMSE <3 bpm target |
+| Heart Rate | Exploratory | Document accuracy; no clinical claim |
+| Body Position (4-class) | Strongly feasible | Pressure centroid → Supine / Lateral / Seated |
+| Bed Occupancy | Strongly feasible | Load cells + pressure, highest confidence |
+| Visitor Detection | Strongly feasible | Load cell weight delta primary |
+| Surface Temperature Trend | Feasible | ±0.2°C MLX90614; surface only, not core |
+| Pressure Duration Map | Feasible | 12×12 grid body-region mapping |
+| Ward Priority Score (Phase 2) | Research demonstration | Simulation-based; not clinical triage |
+
+> **What we never claim:** Core body temperature, clinical HR, blood pressure, SpO₂, patient diagnosis, clinical deterioration prediction, real-time ward deployment.
+
+---
+
+## 8. Budget Summary
+
+| Category | Key Items | ₹ |
 |---|---|---:|
-| **Core Hardware (Section A)** | HLK-LD6002 radar (₹2,200), SM-24 geophone (₹500), Velostat ×4 (₹1,900), MLX90640 (₹5,000), MLX90614 (₹700), load cells ×4 (₹400), Raspberry Pi 5 8 GB (₹20,000), microSD 64GB A2 (₹2,800), RPi PSU & case (₹2,200), ESP32, ADCs, muxes, converters | 40,465 |
-| **Prototype Fabrication (Section B)** | Cot frame & foam mattress (₹7,000 fallback), headboard bracket, camera arm, load cell footpads, cable conduits, project enclosures | 10,160 |
-| **Data & Experimentation (Section C)** | Calibration weights, EVA foam backing, thermal reference target, desk fan, consumables | 3,350 |
-| **Validation & Reference (Section D)** | Digital stopwatch, volunteer honoraria (10 sessions), ethics docs, USB drive + conditional V2/V3/V4 reference scale/spirometer/oximeter fallback (₹2,800) | 5,750 |
-| **Procurement Subtotal** | | **59,725** |
-| **Contingency (~8%)** | Shipping, price variations, component buffers | 4,555 |
-| **TOTAL (Worst Case — All Items Purchased)** | | **₹64,280** |
-| **TOTAL (Best Case — Institutional Access for Bed & Validation Tools)** | | **₹61,480** |
-| **Uncommitted Surplus (Available for Phase 2)** | Retained in institutional grant account | **₹35,720–₹38,520** |
+| Core Hardware | RPi 5 8GB (₹20,000), MLX90640 (₹5,000), Radar (₹2,200), Geophone (₹500), Velostat ×4 (₹2,400), Load cells + HX711 (₹540), Thermal point (₹700), ESP32, ADCs, muxes, PSU, case | 40,465 |
+| Fabrication | Bed cot, foam mattress, headboard bracket, camera arm, footpad plates, cable management, enclosures | 10,160 |
+| Calibration & Experiments | Weight set, EVA foam, thermal target, thermometer, fan, consumables | 3,350 |
+| Validation | Stopwatch, honoraria (10 sessions), ethics docs, reference instruments (fallback) | 5,750 |
+| Contingency (~8%) | | 4,555 |
+| **TOTAL** | | **₹64,280** |
+| Surplus vs ₹1,00,000 | Reserved for Phase 2 | **₹35,720** |
 
 ---
 
-## 8. Experimental & Validation Roadmap
+## 9. Research Novelty
 
-```
-  WEEKS 1–4              WEEKS 5–8             WEEKS 9–14            WEEKS 15–18
-┌───────────────┐      ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
-│  PHASE 1:     │─────►│  PHASE 2:     │────►│  PHASE 3:     │────►│  PHASE 4:     │
-│  Sensor       │      │  Multimodal   │     │  Volunteer    │     │  Clinical Ref │
-│  Calibration  │      │  Fusion Test  │     │  Trials (IRB) │     │  Comparison   │
-└───────────────┘      └───────────────┘     └───────────────┘     └───────────────┘
-  • Load Cell Tare       • Motion Gate         • 10 Healthy          • Manual Breath
-  • Pressure Grid Scan     Test (>90%)           Volunteers            Count (RMSE <3)
-  • Radar RR Peak        • Visitor Flag        • 30–60 min           • Pulse Oximeter
-  • Geophone Filter        Test (>95%)           Sessions              Ref HR
-  • Thermal Calibration  • Blanket Detect      • Record Scenarios    • Scale Weight Ref
-```
+No peer-reviewed study (2025–2026) has demonstrated a system that simultaneously:
+1. Combines **three independent physiological measurement pathways** (radar, geophone, pressure-BCG) in a single bed platform
+2. **Explicitly detects and flags** real-world measurement interference (movement, visitors, blanket) rather than silently outputting corrupted data
+3. Achieves this at **under ₹65,000 (< USD 775)** via a bed-retrofit approach
+4. Uses real single-bed hardware recordings to train a **simulation-based explainable ward prioritisation model**
 
-### Key Performance Targets
-
-- **Respiratory Rate Accuracy:** RMSE < 3 bpm vs. manual observer count over 60-second windows.
-- **Interference Detection Sensitivity:** > 90% detection rate for visitor presence, patient movement, and blanket coverage.
-- **Occupancy & Bed-Exit Sensitivity:** > 99% accuracy for bed occupancy; bed-exit alert latency < 3 seconds.
+**Defensible Research Gap:**
+> *"No integrated low-cost system provides three independent physiological pathways with confidence-aware interference detection and simulation-grounded XAI prioritisation in a conventional hospital bed retrofit."*
 
 ---
 
-*Validated Concept Document — Smart Bed V2 System Specification*  
-*Aligned with Analysis and Validation.md, ItemizedBudget.md, and Budget_Slide_Content.md*  
-*August 2026 | Coimbatore, Tamil Nadu, India*
+*Validated Concept — Smart Bed V2 System Specification*  
+*Aligned with Analysis and Validation.md and ItemizedBudget.md | August 2026*
