@@ -40,8 +40,9 @@
 | 20 | CH340 USB-to-UART Debug Cable | CH340-based USB-to-UART TTL serial cable | **CH340 USB-to-UART TTL serial debug cable** | ESP32 serial debugging and firmware flashing during development. Separate from the CP2102 module (Item NEW-2) which is used exclusively for LD6002 radar configuration. | 175 | 1 | 175 |
 | NEW-1 | Raspberry Pi 5 Protective Case | GPIO-accessible acrylic or polycarbonate enclosure for Raspberry Pi 5, compatible with active cooler | **Waveshare Clear Acrylic Case for Raspberry Pi 5** (removable GPIO cover) | Physical protection for the Raspberry Pi 5 board on a dynamic prototype platform subject to vibration, dust, and accidental contact during experiment setup and repositioning. Not included in original budget — identified as a missing component during verification. | 1,000 | 1 | 1,000 |
 | NEW-2 | CP2102 USB-to-UART Module (LD6002 config) | USB-to-UART TTL module, CP2102 chip, micro-USB or USB-C | **CP2102 USB-to-UART TTL breakout module** | Dedicated UART adapter for configuring the HLK-LD6002 radar during initial setup (output format selection, sensitivity tuning) directly from a laptop, without routing through the Raspberry Pi. Separate from the CH340 debug cable (Item 20) which is used for ESP32 flashing only. Not included in original budget — identified as a missing component during verification. | 120 | 1 | 120 |
+| NEW-3 | Geophone Sensor (Under-Mattress BCG) | Single-axis geophone, SM-24 type or equivalent, ~28 Hz natural frequency, coil-based velocity sensor | **SM-24 geophone** or equivalent low-frequency geophone sensor | Placed under the mattress (between mattress and bed frame) to detect **body-transmitted vibrations** caused by heartbeat and breathing — the same principle as Ballistocardiography (BCG). Provides a second independent measurement path for HR and RR that is unaffected by blankets, body orientation, or radar beam alignment. Signal processed on Raspberry Pi (bandpass: 0.1–0.5 Hz for breathing, 0.8–2.5 Hz for heartbeat). Directly validated by R8 (SimDot, Pitafi et al., Feb 2026): MAE < 2 bpm on Raspberry Pi. Combined with radar readings in the confidence-aware fusion layer to increase HR/RR confidence when both signals agree. | 500 | 1 | 500 |
 
-**Hardware Subtotal: ₹39,965**
+**Hardware Subtotal: ₹40,465**
 
 ---
 
@@ -101,15 +102,15 @@
 
 | Category | Amount (₹) |
 |---|---:|
-| Core Hardware — Section A (Items 1–20 + 5B + NEW-1, NEW-2; SSD removed) | 39,965 |
+| Core Hardware — Section A (Items 1–20 + 5B + NEW-1, NEW-2, NEW-3 geophone; SSD removed) | 40,465 |
 | Prototype Fabrication — Section B (F1–F10) | 10,160 |
 | Data & Experimentation — Section C (D1–D7) | 3,350 |
 | Validation — Section D (V1–V7, incl. conditional V2/V3/V4) | 5,750 |
-| **Procurement Subtotal** | **59,225** |
-| Contingency (~8% of procurement subtotal) | **4,515** |
-| **TOTAL** | **₹63,740** |
-| **Surplus vs. ₹1,00,000 cap** | **₹36,260 uncommitted** |
-| *If V2/V3/V4 sourced institutionally (best case)* | *₹60,940 total* |
+| **Procurement Subtotal** | **59,725** |
+| Contingency (~8% of procurement subtotal) | **4,555** |
+| **TOTAL** | **₹64,280** |
+| **Surplus vs. ₹1,00,000 cap** | **₹35,720 uncommitted** |
+| *If V2/V3/V4 sourced institutionally (best case)* | *₹61,480 total* |
 
 ---
 
