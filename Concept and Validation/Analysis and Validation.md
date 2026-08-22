@@ -549,25 +549,25 @@ Collect labelled scenario recordings (see §7 scenario labels). These recordings
 
 ---
 
-## Recommended 15-Slide Funding Narrative
+## Recommended 15-Slide Presentation Narrative
 
-| # | Slide Title | Purpose |
-|---|---|---|
-| 1 | **Project Title** | Project name, one-line vision, team/institution |
-| 2 | **The Monitoring Gap in Indian Hospital Wards** | Clinical problem: monitoring burden, staff workload, missed/limited continuous observations |
-| 3 | **Why Contact-Based Monitoring Has Limits** | Wires, attachment, displacement, discomfort, maintenance and fragmented monitoring |
-| 4 | **Contactless Systems Already Work — in Labs and Hospitals** | Establish evidence that contactless monitoring is technically feasible using recent research |
-| 5 | **Why Existing Contactless Systems Are Not the Answer** | Cost, infrastructure requirements, limited integration and limitations of single-modality systems |
-| 6 | **The Silent Failure Problem** | Explain how a sensor can produce unreliable data without clearly indicating that the measurement is unreliable |
-| 7 | **Our Approach: The Hospital Bed as a Sensing Platform** | Retrofit existing beds/cots rather than replacing them; unobtrusive sensing architecture |
-| 8 | **Five Sensors — Three Independent Measurement Pathways** | Explain the sensing strategy and why independent/complementary pathways improve reliability |
-| 9 | **The Confidence-Aware Fusion Engine** | Core research concept: determine *whether a measurement can be trusted* before using it |
-| 10 | **From One Bed to a Ward** | How the architecture can eventually scale to multiple beds, patient prioritisation and ward-level monitoring |
-| 11 | **What the Dashboard Tells Nurses** | Show practical output: occupancy, RR, confidence, position, movement and alerts — without diagnostic claims |
-| 12 | **Evidence Base: Recent Research (2025–2026)** | Present the key papers supporting the sensing technologies, multimodal monitoring and clinical direction |
-| 13 | **Budget: ₹64,280 for the Full Prototype** | Show realistic prototype expenditure and explain how the remaining funding can support further research |
-| 14 | **Research Novelty & Proposed Contribution** | Clearly state the research gap and what your project contributes: multimodal pathways + confidence-aware fusion + affordable retrofit architecture |
-| 15 | **Thank You** | Final project statement/contact/team information |
+| # | Slide Title | Core Content | Visual |
+|---:|---|---|---|
+| **1** | **Project Title** | Project name + one-line vision | Hero concept visual |
+| **2** | **The Monitoring Gap in Indian Hospital Wards** | Why continuous patient monitoring is difficult; patient/staff burden; need for unobtrusive monitoring | Supporting statistics / simple visual |
+| **3** | **Why Contact-Based Monitoring Has Limits** | Attachment, wires, discomfort, displacement, maintenance, fragmented information | Patient + sensor illustration / comparison |
+| **4** | **Contactless Systems Already Work — in Labs and Hospitals** | Recent research demonstrating contactless HR/RR, bed sensing, radar, thermal, etc.; establish that the underlying technologies are feasible | **Research evidence chart/table** |
+| **5** | **Why Existing Contactless Systems Are Not the Answer** | Cost, infrastructure, single-modality limitations, limited accessibility, limited clinical intelligence | **Comparison table:** Existing approaches vs requirements |
+| **6** | **The Silent Failure Problem** | **MAIN PROBLEM:** a sensor can produce a plausible but unreliable measurement due to movement, visitors, blankets, etc. Why blindly trusting one sensor is dangerous | **Scenario diagram:** True state → sensor disturbance → unreliable reading |
+| **7** | **Our Approach: The Hospital Bed as a Sensing Platform** | Retrofit conventional beds; unobtrusive sensing; no need to replace the bed; overall concept | **Conceptual bed diagram** |
+| **8** | **Five Sensors — Three Independent Measurement Pathways** | Explain the five sensors and group them into three complementary sensing pathways; show what each observes | **MANDATORY sensing architecture diagram** |
+| **9** | **Hardware Architecture** | Sensor layer → microcontrollers/edge processing → communication → server/dashboard hardware | **MANDATORY hardware architecture diagram** |
+| **10** | **Software Architecture & Data Flow** | Data acquisition → preprocessing → signal quality → sensor fusion → AI interpretation → database/API → dashboard | **MANDATORY software architecture + pipeline** |
+| **11** | **The Confidence-Aware Fusion Engine** | Core research mechanism: determine whether observations are trustworthy; use cross-sensor agreement to handle movement, visitors, blankets, etc. | **MANDATORY fusion pipeline / decision diagram** |
+| **12** | **From One Bed to a Ward** | Scale from one prototype to multiple beds; centralized monitoring; patient prioritisation; future ward-level intelligence | **Ward-level architecture diagram** |
+| **13** | **What the Dashboard Tells Nurses** | Patient status, RR/HR trends, confidence, position, occupancy, alerts; raw data → actionable information | **Dashboard mock-up** |
+| **14** | **Evidence, Research Novelty, Budget & Expected Contribution** | Recent research → remaining gap → your contribution → ₹64,280 prototype budget → expected research output | **Research-gap map + budget pie chart** |
+| **15** | **Thank You** | One-line vision + team/institution | Minimal |
 
 ---
 
