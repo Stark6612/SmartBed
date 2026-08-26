@@ -235,18 +235,18 @@
 
 **Display on Slide:**
 
-**Before reporting any measurement, the system asks five questions in order:**
+**Before reporting any measurement, the system evaluates five validity gates in order:**
 
-| Question | If Yes | Sensor State |
-|---|---|---|
-| 1. Are load cells above tare weight? | No → | 🔴 **Bed Unoccupied** — suppress everything |
-| 2. Load cell delta > 30 kg OR second pressure centroid? | Yes → | 🟠 **Visitor Detected** — suppress vitals, raise alert |
-| 3. Pressure matrix temporal change > threshold? | Yes → | 🟡 **Patient Moving** — pause radar + geophone 30 s |
-| 4. Thermal contrast index < 0.3? | Yes → | 🟡 **Body Obscured** — suspend temperature reading |
-| 5. Radar RR and Geophone RR agree within ±2 bpm? | Yes → | 🟢 **High Confidence** — publish readings |
-|  | No → | 🟡 **Low Confidence** — publish with explicit flag |
+| Step | Rule / Check | Trigger Condition | Resulting System State & Action |
+|---:|---|---|---|
+| **1** | Occupancy Check | Load cells $\le$ Tare weight baseline | 🔴 **Bed Unoccupied** — Suppress all physiological outputs |
+| **2** | Visitor Gate | Weight delta > 30 kg **OR** 2nd centroid | 🟠 **Visitor Detected** — Suppress vitals, raise alert |
+| **3** | Motion Gate | Pressure grid temporal change > threshold | 🟡 **Patient Moving** — Pause radar & geophone RR (30 s) |
+| **4** | Blanket Gate | Thermal contrast index < 0.3 | 🟡 **Body Obscured** — Suspend temperature reading only |
+| **5** | 3-Way Agreement | Radar RR & Geophone RR agree within $\pm2$ bpm | 🟢 **High Confidence** — Publish all validated vitals |
+| **6** | Pathway Disagreement | Radar RR & Geophone RR disagree $>2$ bpm | 🟡 **Low Confidence** — Publish vitals with warning flag |
 
-> *"A nurse sees either a green reading — trustworthy — or a flagged reading with a reason. Never a silent wrong number."*
+> *"A nurse sees either a green reading — trustworthy — or a flagged reading with an explicit reason. Never a silent wrong number."*
 
 **How to Present:**
 - This is your core research slide. Spend the most time here.
