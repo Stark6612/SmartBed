@@ -340,14 +340,15 @@ An **XGBoost classifier** is trained on the snapshots to rank patient priority.
 
 > 📊 **Use the pie chart from [Budget_Slide_Content.md](Budget_Slide_Content.md)** — the Mermaid donut chart renders natively and is optimised for slide use. The table below is a verbal reference only.
 
-| Category | ₹ |
-|---|---:|
-| Processing (RPi 5 8 GB, microSD, PSU, case) | 25,020 |
-| Sensors (radar, geophone, pressure, load cells, thermal) | 12,100 |
-| Fabrication + calibration + validation | 19,260 |
-| Contingency (~8%) | 4,555 |
-| **Total** | **₹64,280** |
-| Surplus for Phase 2 | ₹35,720 |
+| Section | Key Components Included | Amount (₹) |
+|---|---|---:|
+| **Section A — Core Hardware** | RPi 5 8GB (₹20k), Radar, Geophone, Velostat matrix, Load cells, MLX90640, MLX90614, ESP32, ADCs, Muxes | 40,465 |
+| **Section B — Prototype Fabrication** | Cot frame, foam mattress, headboard radar mount, overhead camera arm, footpads, enclosures, wiring | 10,160 |
+| **Section C — Data & Experimentation** | Calibration weights (5 kg), EVA foam, thermal target, ref thermometer, USB fan, forms & hygiene | 3,350 |
+| **Section D — Validation** | Reference stopwatch, volunteer honoraria, ethics printing, backup drive + conditional ref instruments | 5,750 |
+| **Contingency (~8%)** | Component failures, price variation & shipping buffer | 4,555 |
+| **Total (Worst Case)** | *Full 5-sensor AI research prototype expenditure* | **₹64,280** |
+| **Surplus for Phase 2** | *Uncommitted surplus remaining under ₹1,00,000 grant cap* | **₹35,720** |
 
 **Expected outputs:**
 - Validated single-bed prototype with documented sensor accuracy

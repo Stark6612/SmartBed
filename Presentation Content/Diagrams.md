@@ -416,19 +416,18 @@ Section 3: Ward-Level Multi-Bed Priority Queue (Phase 2 View)
 ```text
 Part A: Smart Bed V2 Verified Budget Distribution (Total ₹64,280)
 
-1. Processing Platform: ₹25,020 (40.7%)
-   • Raspberry Pi 5 8GB, Active Cooler, 64GB MicroSD A2, 27W PSU, Case
-2. Sensor Array (incl. Geophone): ₹12,100 (19.7%)
-   • 60GHz Radar, Geophone SM-24, Velostat Grid, Load Cells, MLX90640, MLX90614
-3. Prototype Fabrication: ₹10,160 (16.5%)
-   • Hospital Cot Frame, Foam Mattress, MS Mounts, Cable Conduits, Enclosures
-4. Data & Clinical Validation: ₹6,300 (10.2%)
-   • Calibration Weights, Volunteer Honoraria, Ethics Docs, Test Consumables
-5. Contingency Buffer (~8%): ₹4,555 (7.4%)
-6. MCU & Electronics: ₹3,345 (5.5%)
-   • ESP32, HX711 ADCs, ADS1115 ADCs, Multiplexers, Passives
+1. Section A — Core Hardware: ₹40,465 (63.0%)
+   • Raspberry Pi 5 8GB (₹20,000), 60GHz Radar, Geophone SM-24, Velostat Grid, Load Cells, MLX90640, MLX90614, ESP32, ADCs, Muxes, Power Rails
+2. Section B — Prototype Fabrication: ₹10,160 (15.8%)
+   • Hospital Cot Frame, Foam Mattress, MS Radar Mount, Overhead Camera Arm, Load Cell Footpads, Enclosures, Cabling
+3. Section D — Validation: ₹5,750 (9.0%)
+   • Reference Stopwatch, Volunteer Honoraria (10 sessions), Ethics Printing, Backup Drive + Fallback Instruments (V2/V3/V4)
+4. Contingency Buffer (~8%): ₹4,555 (7.1%)
+   • Component failure allowance, price variation, shipping buffer
+5. Section C — Data & Experimentation: ₹3,350 (5.2%)
+   • Calibration Weights Set (5 kg), EVA Foam Backing, Thermal Reference Target, Reference Thermometer, Desk Fan, Forms & Hygiene
 
-Uncommitted Surplus: ₹35,720 retained for Phase 2 clinical validation
+Uncommitted Surplus: ₹35,720 retained for Phase 2 clinical-site testing (Funding Limit: ₹1,00,000)
 
 Part B: The Academic Research Gap We Fill
 • Gap 1: Multi-Pathway Sensing — 3 independent physical HR/RR pathways in 1 bed
